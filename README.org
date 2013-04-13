@@ -1,9 +1,9 @@
 * Links
 ** Raw reads
-- ftp://ftp.cebitec.uni-bielefeld.de/pub/ngscomparison/reads/trimmed/sakai_pgm_100bp.fastq.zip
-- ftp://ftp.cebitec.uni-bielefeld.de/pub/ngscomparison/reads/trimmed/sakai_pgm_200bp.fastq.zip
-- ftp://ftp.cebitec.uni-bielefeld.de/pub/ngscomparison/reads/trimmed/sakai_pgm_300bp.fastq.zip
-- ftp://ftp.cebitec.uni-bielefeld.de/pub/ngscomparison/reads/trimmed/sakai_pgm_400bp.fastq.zip
+- ftp://ftp.cebitec.uni-bielefeld.de/pub/ngscomparison/reads/raw/sakai_pgm_100bp.fastq.zip
+- ftp://ftp.cebitec.uni-bielefeld.de/pub/ngscomparison/reads/raw/sakai_pgm_200bp.fastq.zip
+- ftp://ftp.cebitec.uni-bielefeld.de/pub/ngscomparison/reads/raw/sakai_pgm_300bp.fastq.zip
+- ftp://ftp.cebitec.uni-bielefeld.de/pub/ngscomparison/reads/raw/sakai_pgm_400bp.fastq.zip
   
 ** Reference sequences
 - ftp://ftp.cebitec.uni-bielefeld.de/pub/ngscomparison/references/EcoliSakaiED45.fasta

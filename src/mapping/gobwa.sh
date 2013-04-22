@@ -23,8 +23,7 @@ if [ $# -eq $min_args ]; then
 
 
 	${bwa_path}/bwa bwasw -t $threads $ref $reads > $tag.sam
-	${execDir}/filter_unique.pl $tag.sam 0 > $tag.uni.sam
-	samtools view -bS $tag.uni.sam > $tag.uni.bam 
+	./filter_unique $tag.sam $tag.uni.bam
   ./fill_md $ref $tag.uni.bam $tag.uni.calmd.bam
 	rm $tag.uni.bam
 	samtools sort $tag.uni.calmd.bam $tag.uni.sorted

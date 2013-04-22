@@ -1,3 +1,6 @@
+fill_md:
+	rdmd --build-only -IBioD -O -release -inline fill_md.d
+
 read_bam:
 	rdmd --build-only -IBioD -O -release -inline read_bam.d
 

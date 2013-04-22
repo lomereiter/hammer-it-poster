@@ -83,8 +83,13 @@ ln -s ${inAbs} INPUT
 cd ${cwd}
 mapOut=${outpath}/${prefix}
 echo -e "\n[1]Start mapping\n"
-echo -e "   ${execDir}/gotmap.sh ${mapOut} ${input} ${ref} \n"
-${execDir}/gotmap.sh ${mapOut} ${input} ${ref} 
+
+# echo -e "   ${execDir}/gotmap.sh ${mapOut} ${input} ${ref} \n"
+# ${execDir}/gotmap.sh ${mapOut} ${input} ${ref}
+
+echo -e "   ${execDir}/gobwa.sh ${mapOut} ${input} ${ref} \n"
+${execDir}/gobwa.sh ${mapOut} ${input} ${ref}
+
 if [ $? -ne 0 ]; then exit $err ; fi
 echo -e "\n   Mapping completed\n"
 prefixUni=${prefix}.uni

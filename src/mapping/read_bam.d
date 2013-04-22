@@ -27,7 +27,7 @@ struct ReadStats {
     if (read.is_unmapped || mapping_quality < kMinimumMappingQuality)
       mapping_quality = 0;
 
-    if (mapping_quality == 0)
+    if (mapping_quality == 0 || read["MD"].is_nothing)
       return;
 
     n_insertions = insertions.walkLength();

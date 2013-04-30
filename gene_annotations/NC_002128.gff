@@ -1,0 +1,181 @@
+##gff-version 3
+#!gff-spec-version 1.20
+#!processor NCBI annotwriter
+##sequence-region NC_002128.1 1 92721
+##species http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=386585
+NC_002128.1	RefSeq	region	1	92721	.	+	.	ID=id0;Dbxref=taxon:386585;Is_circular=true;gbkey=Src;genome=plasmid;mol_type=genomic DNA;note=RIMD 0509952 is a strain of enterohemorrhagic E. coli%2C EHEC O157:H7;plasmid-name=pO157;serovar=O157:H7;strain=Sakai;substrain=RIMD 0509952
+NC_002128.1	RefSeq	gene	92527	95223	.	+	.	ID=gene0;Name=tagA;Dbxref=GeneID:1789672;gbkey=Gene;gene=tagA;locus_tag=pO157p01
+NC_002128.1	RefSeq	CDS	92527	95223	.	+	0	ID=cds0;Name=NP_052607.1;Parent=gene0;Dbxref=Genbank:NP_052607.1,GeneID:1789672;gbkey=CDS;product=ToxR-regulated lipoprotein;protein_id=NP_052607.1;transl_table=11
+NC_002128.1	RefSeq	region	1	92721	.	+	.	ID=id1;Note=REFSEQ gene predictions performed by GeneMark 2.4%2FGeneMark.hmm 2.0 with comparison to original submitter provided annotation.;gbkey=Comment
+NC_002128.1	RefSeq	gene	2589	3464	.	+	.	ID=gene1;Name=etpC;Dbxref=GeneID:1789731;gbkey=Gene;gene=etpC;locus_tag=pO157p02
+NC_002128.1	RefSeq	CDS	2589	3464	.	+	0	ID=cds1;Name=NP_052608.1;Parent=gene1;Dbxref=Genbank:NP_052608.1,GeneID:1789731;gbkey=CDS;product=EtpC;protein_id=NP_052608.1;transl_table=11
+NC_002128.1	RefSeq	gene	3675	5432	.	+	.	ID=gene2;Name=etpD;Dbxref=GeneID:1789733;gbkey=Gene;gene=etpD;locus_tag=pO157p03
+NC_002128.1	RefSeq	CDS	3675	5432	.	+	0	ID=cds2;Name=NP_052609.1;Parent=gene2;Dbxref=Genbank:NP_052609.1,GeneID:1789733;gbkey=CDS;product=EtpD;protein_id=NP_052609.1;transl_table=11
+NC_002128.1	RefSeq	gene	5432	6937	.	+	.	ID=gene3;Name=etpE;Dbxref=GeneID:1789725;gbkey=Gene;gene=etpE;locus_tag=pO157p04
+NC_002128.1	RefSeq	CDS	5432	6937	.	+	0	ID=cds3;Name=NP_052610.1;Parent=gene3;Dbxref=Genbank:NP_052610.1,GeneID:1789725;gbkey=CDS;product=EtpE;protein_id=NP_052610.1;transl_table=11
+NC_002128.1	RefSeq	gene	6939	8162	.	+	.	ID=gene4;Name=etpF;Dbxref=GeneID:1789729;gbkey=Gene;gene=etpF;locus_tag=pO157p05
+NC_002128.1	RefSeq	CDS	6939	8162	.	+	0	ID=cds4;Name=NP_052611.1;Parent=gene4;Dbxref=Genbank:NP_052611.1,GeneID:1789729;gbkey=CDS;product=EtpF;protein_id=NP_052611.1;transl_table=11
+NC_002128.1	RefSeq	gene	8193	8627	.	+	.	ID=gene5;Name=etpG;Dbxref=GeneID:1789711;gbkey=Gene;gene=etpG;locus_tag=pO157p06
+NC_002128.1	RefSeq	CDS	8193	8627	.	+	0	ID=cds5;Name=NP_052612.1;Parent=gene5;Dbxref=Genbank:NP_052612.1,GeneID:1789711;gbkey=CDS;product=EtpG;protein_id=NP_052612.1;transl_table=11
+NC_002128.1	RefSeq	gene	8624	9178	.	+	.	ID=gene6;Name=etpH;Dbxref=GeneID:1789742;gbkey=Gene;gene=etpH;locus_tag=pO157p07
+NC_002128.1	RefSeq	CDS	8624	9178	.	+	0	ID=cds6;Name=NP_052613.1;Parent=gene6;Dbxref=Genbank:NP_052613.1,GeneID:1789742;gbkey=CDS;product=EtpH;protein_id=NP_052613.1;transl_table=11
+NC_002128.1	RefSeq	gene	9193	9540	.	+	.	ID=gene7;Name=etpI;Dbxref=GeneID:1789681;gbkey=Gene;gene=etpI;locus_tag=pO157p08
+NC_002128.1	RefSeq	CDS	9193	9540	.	+	0	ID=cds7;Name=NP_052614.1;Parent=gene7;Dbxref=Genbank:NP_052614.1,GeneID:1789681;gbkey=CDS;product=EtpI;protein_id=NP_052614.1;transl_table=11
+NC_002128.1	RefSeq	gene	9537	10136	.	+	.	ID=gene8;Name=etpJ;Dbxref=GeneID:1789730;gbkey=Gene;gene=etpJ;locus_tag=pO157p09
+NC_002128.1	RefSeq	CDS	9537	10136	.	+	0	ID=cds8;Name=NP_052615.1;Parent=gene8;Dbxref=Genbank:NP_052615.1,GeneID:1789730;gbkey=CDS;product=EptJ;protein_id=NP_052615.1;transl_table=11
+NC_002128.1	RefSeq	gene	10133	11110	.	+	.	ID=gene9;Name=etpK;Dbxref=GeneID:1789734;gbkey=Gene;gene=etpK;locus_tag=pO157p10
+NC_002128.1	RefSeq	CDS	10133	11110	.	+	0	ID=cds9;Name=NP_052616.1;Parent=gene9;Dbxref=Genbank:NP_052616.1,GeneID:1789734;gbkey=CDS;product=EtpK;protein_id=NP_052616.1;transl_table=11
+NC_002128.1	RefSeq	gene	11473	12321	.	+	.	ID=gene10;Name=etpL;Dbxref=GeneID:1789704;gbkey=Gene;gene=etpL;locus_tag=pO157p11
+NC_002128.1	RefSeq	CDS	11473	12321	.	+	0	ID=cds10;Name=NP_052617.1;Parent=gene10;Dbxref=Genbank:NP_052617.1,GeneID:1789704;gbkey=CDS;product=EtpL;protein_id=NP_052617.1;transl_table=11
+NC_002128.1	RefSeq	gene	12308	12820	.	+	.	ID=gene11;Name=etpM;Dbxref=GeneID:1789716;gbkey=Gene;gene=etpM;locus_tag=pO157p12
+NC_002128.1	RefSeq	CDS	12308	12820	.	+	0	ID=cds11;Name=NP_052618.1;Parent=gene11;Dbxref=Genbank:NP_052618.1,GeneID:1789716;gbkey=CDS;product=EtpM;protein_id=NP_052618.1;transl_table=11
+NC_002128.1	RefSeq	gene	12995	13711	.	+	.	ID=gene12;Name=etpN;Dbxref=GeneID:1789664;gbkey=Gene;gene=etpN;locus_tag=pO157p13
+NC_002128.1	RefSeq	CDS	12995	13711	.	+	0	ID=cds12;Name=NP_052619.1;Parent=gene12;Dbxref=Genbank:NP_052619.1,GeneID:1789664;gbkey=CDS;product=EptN;protein_id=NP_052619.1;transl_table=11
+NC_002128.1	RefSeq	gene	13803	14204	.	+	.	ID=gene13;Name=etpO;Dbxref=GeneID:1789743;gbkey=Gene;gene=etpO;locus_tag=pO157p14
+NC_002128.1	RefSeq	CDS	13803	14204	.	+	0	ID=cds13;Name=NP_052620.1;Parent=gene13;Dbxref=Genbank:NP_052620.1,GeneID:1789743;gbkey=CDS;product=EptO;protein_id=NP_052620.1;transl_table=11
+NC_002128.1	RefSeq	gene	14347	14688	.	+	.	ID=gene14;Name=pO157p15;Dbxref=GeneID:1789717;gbkey=Gene;locus_tag=pO157p15
+NC_002128.1	RefSeq	CDS	14347	14688	.	+	0	ID=cds14;Name=NP_052621.1;Parent=gene14;Note=hypothetical 12.7 kDa protein encoded in insertion element IS911%3B similar to SwissProt accession number P39213;Dbxref=Genbank:NP_052621.1,GeneID:1789717;gbkey=CDS;product=hypothetical protein;protein_id=NP_052621.1;transl_table=11
+NC_002128.1	RefSeq	gene	14733	15554	.	+	.	ID=gene15;Name=pO157p16;Dbxref=GeneID:1789706;gbkey=Gene;locus_tag=pO157p16
+NC_002128.1	RefSeq	CDS	14733	15554	.	+	0	ID=cds15;Name=NP_052622.1;Parent=gene15;Dbxref=Genbank:NP_052622.1,GeneID:1789706;gbkey=CDS;product=hypothetical protein;protein_id=NP_052622.1;transl_table=11
+NC_002128.1	RefSeq	gene	16119	16610	.	+	.	ID=gene16;Name=hlyC;Dbxref=GeneID:1789689;gbkey=Gene;gene=hlyC;locus_tag=pO157p17
+NC_002128.1	RefSeq	CDS	16119	16610	.	+	0	ID=cds16;Name=NP_052623.1;Parent=gene16;Dbxref=Genbank:NP_052623.1,GeneID:1789689;gbkey=CDS;product=hemolysin C;protein_id=NP_052623.1;transl_table=11
+NC_002128.1	RefSeq	gene	16612	19608	.	+	.	ID=gene17;Name=hlyA;Dbxref=GeneID:1789686;gbkey=Gene;gene=hlyA;locus_tag=pO157p18
+NC_002128.1	RefSeq	CDS	16612	19608	.	+	0	ID=cds17;Name=NP_052624.1;Parent=gene17;Dbxref=Genbank:NP_052624.1,GeneID:1789686;gbkey=CDS;product=hemolysin A;protein_id=NP_052624.1;transl_table=11
+NC_002128.1	RefSeq	gene	19658	21778	.	+	.	ID=gene18;Name=hlyB;Dbxref=GeneID:1789727;gbkey=Gene;gene=hlyB;locus_tag=pO157p19
+NC_002128.1	RefSeq	CDS	19658	21778	.	+	0	ID=cds18;Name=NP_052625.1;Parent=gene18;Dbxref=Genbank:NP_052625.1,GeneID:1789727;gbkey=CDS;product=hemolysin B;protein_id=NP_052625.1;transl_table=11
+NC_002128.1	RefSeq	gene	21782	23221	.	+	.	ID=gene19;Name=hlyD;Dbxref=GeneID:1789705;gbkey=Gene;gene=hlyD;locus_tag=pO157p20
+NC_002128.1	RefSeq	CDS	21782	23221	.	+	0	ID=cds19;Name=NP_052626.1;Parent=gene19;Dbxref=Genbank:NP_052626.1,GeneID:1789705;gbkey=CDS;product=hemolysin D;protein_id=NP_052626.1;transl_table=11
+NC_002128.1	RefSeq	gene	23288	23482	.	+	.	ID=gene20;Name=ECp021.1n;Dbxref=GeneID:2717077;gbkey=Gene;locus_tag=ECp021.1n
+NC_002128.1	RefSeq	CDS	23288	23482	.	+	0	ID=cds20;Name=NP_958720.1;Parent=gene20;Dbxref=Genbank:NP_958720.1,GeneID:2717077;gbkey=CDS;product=hypothetical protein;protein_id=NP_958720.1;transl_table=11
+NC_002128.1	RefSeq	gene	23512	23796	.	+	.	ID=gene21;Name=papX;Dbxref=GeneID:1789696;gbkey=Gene;gene=papX;locus_tag=pO157p21
+NC_002128.1	RefSeq	CDS	23512	23796	.	+	0	ID=cds21;Name=NP_052627.1;Parent=gene21;Note=similar to SwissProt accession number P42193;Dbxref=Genbank:NP_052627.1,GeneID:1789696;gbkey=CDS;product=PapX;protein_id=NP_052627.1;transl_table=11
+NC_002128.1	RefSeq	gene	23965	24195	.	+	.	ID=gene22;Name=ECp023;Dbxref=GeneID:2717075;gbkey=Gene;locus_tag=ECp023
+NC_002128.1	RefSeq	CDS	23965	24195	.	+	0	ID=cds22;Name=NP_958721.1;Parent=gene22;Dbxref=Genbank:NP_958721.1,GeneID:2717075;gbkey=CDS;product=hypothetical protein;protein_id=NP_958721.1;transl_table=11
+NC_002128.1	RefSeq	gene	24316	25056	.	+	.	ID=gene23;Name=pO157p22;Dbxref=GeneID:1789708;gbkey=Gene;locus_tag=pO157p22
+NC_002128.1	RefSeq	CDS	24316	25056	.	+	0	ID=cds23;Name=NP_052628.1;Parent=gene23;Note=probable site-specific recombinase in AFA region%3B similar to SwissProt accession number Q47036;Dbxref=Genbank:NP_052628.1,GeneID:1789708;gbkey=CDS;product=recombinase;protein_id=NP_052628.1;transl_table=11
+NC_002128.1	RefSeq	gene	24745	25062	.	-	.	ID=gene24;Name=pO157p23;Dbxref=GeneID:1789668;gbkey=Gene;locus_tag=pO157p23
+NC_002128.1	RefSeq	CDS	24745	25062	.	-	0	ID=cds24;Name=NP_052629.1;Parent=gene24;Dbxref=Genbank:NP_052629.1,GeneID:1789668;gbkey=CDS;product=hypothetical protein;protein_id=NP_052629.1;transl_table=11
+NC_002128.1	RefSeq	gene	25341	26318	.	-	.	ID=gene25;Name=repFIB;Dbxref=GeneID:1789691;gbkey=Gene;gene=repFIB;locus_tag=pO157p24
+NC_002128.1	RefSeq	CDS	25341	26318	.	-	0	ID=cds25;Name=NP_052630.2;Parent=gene25;Note=replication protein RepFIB %28P307 replicon%29%3B similar to PIR accession number A32310;Dbxref=Genbank:NP_052630.2,GeneID:1789691;gbkey=CDS;product=RepFIB;protein_id=NP_052630.2;transl_table=11
+NC_002128.1	RefSeq	gene	26056	26385	.	+	.	ID=gene26;Name=pO157p25;Dbxref=GeneID:1789679;gbkey=Gene;locus_tag=pO157p25
+NC_002128.1	RefSeq	CDS	26056	26385	.	+	0	ID=cds26;Name=NP_052631.1;Parent=gene26;Dbxref=Genbank:NP_052631.1,GeneID:1789679;gbkey=CDS;product=hypothetical protein;protein_id=NP_052631.1;transl_table=11
+NC_002128.1	RefSeq	gene	26726	26926	.	-	.	ID=gene27;Name=ECp025.2n;Dbxref=GeneID:2717076;gbkey=Gene;locus_tag=ECp025.2n
+NC_002128.1	RefSeq	CDS	26726	26926	.	-	0	ID=cds27;Name=NP_958722.1;Parent=gene27;Dbxref=Genbank:NP_958722.1,GeneID:2717076;gbkey=CDS;product=hypothetical protein;protein_id=NP_958722.1;transl_table=11
+NC_002128.1	RefSeq	gene	26923	27543	.	-	.	ID=gene28;Name=pO157p26;Dbxref=GeneID:1789739;gbkey=Gene;locus_tag=pO157p26
+NC_002128.1	RefSeq	CDS	26923	27543	.	-	0	ID=cds28;Name=NP_052632.1;Parent=gene28;Dbxref=Genbank:NP_052632.1,GeneID:1789739;gbkey=CDS;product=hypothetical protein;protein_id=NP_052632.1;transl_table=11
+NC_002128.1	RefSeq	gene	27540	28223	.	-	.	ID=gene29;Name=pO157p27;Dbxref=GeneID:1789712;gbkey=Gene;locus_tag=pO157p27
+NC_002128.1	RefSeq	CDS	27540	28223	.	-	0	ID=cds29;Name=NP_052633.1;Parent=gene29;Dbxref=Genbank:NP_052633.1,GeneID:1789712;gbkey=CDS;product=KfrAs;protein_id=NP_052633.1;transl_table=11
+NC_002128.1	RefSeq	gene	28682	28900	.	+	.	ID=gene30;Name=letA;Dbxref=GeneID:1789714;gbkey=Gene;gene=letA;locus_tag=pO157p28
+NC_002128.1	RefSeq	CDS	28682	28900	.	+	0	ID=cds30;Name=NP_052634.1;Parent=gene30;Note=CcdA protein%3B protein H%3B LynA%3B similar to SwissProt accession number P05702;Dbxref=Genbank:NP_052634.1,GeneID:1789714;gbkey=CDS;product=plasmid maintenance protein CcdA;protein_id=NP_052634.1;transl_table=11
+NC_002128.1	RefSeq	gene	28902	29207	.	+	.	ID=gene31;Name=letB;Dbxref=GeneID:1789728;gbkey=Gene;gene=letB;locus_tag=pO157p29
+NC_002128.1	RefSeq	CDS	28902	29207	.	+	0	ID=cds31;Name=NP_052635.1;Parent=gene31;Note=controlled cell death protein%3B post-segregation toxin%3B toxin addiction system;Dbxref=Genbank:NP_052635.1,GeneID:1789728;gbkey=CDS;product=plasmid maintenance protein CcdB;protein_id=NP_052635.1;transl_table=11
+NC_002128.1	RefSeq	gene	29208	30014	.	+	.	ID=gene32;Name=pO157p30;Dbxref=GeneID:1789694;gbkey=Gene;locus_tag=pO157p30
+NC_002128.1	RefSeq	CDS	29208	30014	.	+	0	ID=cds32;Name=NP_052636.1;Parent=gene32;Note=Protein D%7Esimilar to SwissProt accession number P06615;Dbxref=Genbank:NP_052636.1,GeneID:1789694;gbkey=CDS;product=resolvase;protein_id=NP_052636.1;transl_table=11
+NC_002128.1	RefSeq	gene	30736	31949	.	-	.	ID=gene33;Name=pO157p31;Dbxref=GeneID:1789677;gbkey=Gene;locus_tag=pO157p31
+NC_002128.1	RefSeq	CDS	30736	31626	.	-	0	ID=cds33;Name=NP_052637.1;Parent=gene33;Note=similar to SwissProt accession number P16942%3B transposase encoded in insertion sequence IS629;Dbxref=Genbank:NP_052637.1,GeneID:1789677;gbkey=CDS;product=transposase;protein_id=NP_052637.1;transl_table=11
+NC_002128.1	RefSeq	gene	31623	31949	.	-	.	ID=gene34;Name=pO157p83;Dbxref=GeneID:3399562;gbkey=Gene;locus_tag=pO157p83
+NC_002128.1	RefSeq	CDS	31623	31949	.	-	0	ID=cds34;Name=NP_052638.1;Parent=gene34;Note=hypothetical 12 kDa protein encoded in insertion sequence IS629%3B similar to SwissProt accession number P16941;Dbxref=Genbank:NP_052638.1,GeneID:3399562;gbkey=CDS;product=hypothetical protein;protein_id=NP_052638.1;transl_table=11
+NC_002128.1	RefSeq	region	32004	32249	.	+	.	ID=id2;Note=similar to Rep protein;gbkey=misc_feature
+NC_002128.1	RefSeq	gene	32837	34003	.	+	.	ID=gene35;Name=sopA;Dbxref=GeneID:1789690;gbkey=Gene;gene=sopA;locus_tag=pO157p33
+NC_002128.1	RefSeq	CDS	32837	34003	.	+	0	ID=cds35;Name=NP_052640.1;Parent=gene35;Note=Protein A%3B similar to SwissProt accession number P08866;Dbxref=Genbank:NP_052640.1,GeneID:1789690;gbkey=CDS;product=plasmid-partitioning protein SopA;protein_id=NP_052640.1;transl_table=11
+NC_002128.1	RefSeq	gene	34003	34974	.	+	.	ID=gene36;Name=sopB;Dbxref=GeneID:1789685;gbkey=Gene;gene=sopB;locus_tag=pO157p34
+NC_002128.1	RefSeq	CDS	34003	34974	.	+	0	ID=cds36;Name=NP_052641.1;Parent=gene36;Note=SopB;Dbxref=Genbank:NP_052641.1,GeneID:1789685;gbkey=CDS;product=plasmid-partitioning protein;protein_id=NP_052641.1;transl_table=11
+NC_002128.1	RefSeq	gene	36274	37998	.	+	.	ID=gene37;Name=pO157p35;Dbxref=GeneID:1789698;gbkey=Gene;locus_tag=pO157p35
+NC_002128.1	RefSeq	CDS	36274	37998	.	+	0	ID=cds37;Name=NP_052642.1;Parent=gene37;Note=similar to SwissProt accession number P19593;Dbxref=Genbank:NP_052642.1,GeneID:1789698;gbkey=CDS;product=reverse transcriptase;protein_id=NP_052642.1;transl_table=11
+NC_002128.1	RefSeq	gene	38075	38977	.	+	.	ID=gene38;Name=pO157p36;Dbxref=GeneID:1789718;gbkey=Gene;locus_tag=pO157p36
+NC_002128.1	RefSeq	CDS	38075	38977	.	+	0	ID=cds38;Name=NP_052643.1;Parent=gene38;Dbxref=Genbank:NP_052643.1,GeneID:1789718;gbkey=CDS;product=hypothetical protein;protein_id=NP_052643.1;transl_table=11
+NC_002128.1	RefSeq	gene	38981	39286	.	+	.	ID=gene39;Name=pO157p37;Dbxref=GeneID:1789693;gbkey=Gene;locus_tag=pO157p37
+NC_002128.1	RefSeq	CDS	38981	39286	.	+	0	ID=cds39;Name=NP_052644.1;Parent=gene39;Dbxref=Genbank:NP_052644.1,GeneID:1789693;gbkey=CDS;product=hypothetical protein;protein_id=NP_052644.1;transl_table=11
+NC_002128.1	RefSeq	gene	39363	40046	.	+	.	ID=gene40;Name=pO157p38;Dbxref=GeneID:1789670;gbkey=Gene;locus_tag=pO157p38
+NC_002128.1	RefSeq	CDS	39363	40046	.	+	0	ID=cds40;Name=NP_052645.1;Parent=gene40;Note=similar to PIR accession number S18997;Dbxref=Genbank:NP_052645.1,GeneID:1789670;gbkey=CDS;product=putative methylase;protein_id=NP_052645.1;transl_table=11
+NC_002128.1	RefSeq	gene	40047	40268	.	+	.	ID=gene41;Name=ECp042;Dbxref=GeneID:2717073;gbkey=Gene;locus_tag=ECp042
+NC_002128.1	RefSeq	CDS	40047	40268	.	+	0	ID=cds41;Name=NP_958723.1;Parent=gene41;Dbxref=Genbank:NP_958723.1,GeneID:2717073;gbkey=CDS;product=hypothetical protein;protein_id=NP_958723.1;transl_table=11
+NC_002128.1	RefSeq	gene	40162	40716	.	+	.	ID=gene42;Name=pO157p39;Dbxref=GeneID:1789700;gbkey=Gene;locus_tag=pO157p39
+NC_002128.1	RefSeq	CDS	40162	40716	.	+	0	ID=cds42;Name=NP_052646.1;Parent=gene42;Dbxref=Genbank:NP_052646.1,GeneID:1789700;gbkey=CDS;product=hypothetical protein;protein_id=NP_052646.1;transl_table=11
+NC_002128.1	RefSeq	gene	40762	41538	.	+	.	ID=gene43;Name=pO157p40;Dbxref=GeneID:1789709;gbkey=Gene;locus_tag=pO157p40
+NC_002128.1	RefSeq	CDS	40762	41538	.	+	0	ID=cds43;Name=NP_052647.1;Parent=gene43;Dbxref=Genbank:NP_052647.1,GeneID:1789709;gbkey=CDS;product=hypothetical protein;protein_id=NP_052647.1;transl_table=11
+NC_002128.1	RefSeq	gene	41411	41983	.	+	.	ID=gene44;Name=pO157p41;Dbxref=GeneID:1789736;gbkey=Gene;locus_tag=pO157p41
+NC_002128.1	RefSeq	CDS	41411	41983	.	+	0	ID=cds44;Name=NP_052648.1;Parent=gene44;Dbxref=Genbank:NP_052648.1,GeneID:1789736;gbkey=CDS;product=hypothetical protein;protein_id=NP_052648.1;transl_table=11
+NC_002128.1	RefSeq	gene	42079	42381	.	+	.	ID=gene45;Name=klcA;Dbxref=GeneID:1789678;gbkey=Gene;gene=klcA;locus_tag=pO157p42
+NC_002128.1	RefSeq	CDS	42079	42381	.	+	0	ID=cds45;Name=NP_052649.1;Parent=gene45;Note=similar to SwissProt accession number P52603;Dbxref=Genbank:NP_052649.1,GeneID:1789678;gbkey=CDS;product=hypothetical protein;protein_id=NP_052649.1;transl_table=11
+NC_002128.1	RefSeq	gene	42428	42850	.	+	.	ID=gene46;Name=pO157p43;Dbxref=GeneID:1789683;gbkey=Gene;locus_tag=pO157p43
+NC_002128.1	RefSeq	CDS	42428	42850	.	+	0	ID=cds46;Name=NP_052650.1;Parent=gene46;Dbxref=Genbank:NP_052650.1,GeneID:1789683;gbkey=CDS;product=hypothetical protein;protein_id=NP_052650.1;transl_table=11
+NC_002128.1	RefSeq	gene	43157	43546	.	+	.	ID=gene47;Name=pO157p44;Dbxref=GeneID:1789726;gbkey=Gene;locus_tag=pO157p44
+NC_002128.1	RefSeq	CDS	43157	43546	.	+	0	ID=cds47;Name=NP_052651.1;Parent=gene47;Dbxref=Genbank:NP_052651.1,GeneID:1789726;gbkey=CDS;product=hypothetical protein;protein_id=NP_052651.1;transl_table=11
+NC_002128.1	RefSeq	gene	44034	44264	.	+	.	ID=gene48;Name=pO157p45;Dbxref=GeneID:1789665;gbkey=Gene;locus_tag=pO157p45
+NC_002128.1	RefSeq	CDS	44034	44264	.	+	0	ID=cds48;Name=NP_052652.1;Parent=gene48;Dbxref=Genbank:NP_052652.1,GeneID:1789665;gbkey=CDS;product=hypothetical protein;protein_id=NP_052652.1;transl_table=11
+NC_002128.1	RefSeq	gene	44316	45677	.	+	.	ID=gene49;Name=pO157p46;Dbxref=GeneID:1789741;gbkey=Gene;locus_tag=pO157p46
+NC_002128.1	RefSeq	CDS	44316	45677	.	+	0	ID=cds49;Name=NP_052653.1;Parent=gene49;Dbxref=Genbank:NP_052653.1,GeneID:1789741;gbkey=CDS;product=hypothetical protein;protein_id=NP_052653.1;transl_table=11
+NC_002128.1	RefSeq	gene	45724	46287	.	+	.	ID=gene50;Name=pO157p47;Dbxref=GeneID:1789684;gbkey=Gene;locus_tag=pO157p47
+NC_002128.1	RefSeq	CDS	45724	46287	.	+	0	ID=cds50;Name=NP_052654.1;Parent=gene50;Dbxref=Genbank:NP_052654.1,GeneID:1789684;gbkey=CDS;product=hypothetical protein;protein_id=NP_052654.1;transl_table=11
+NC_002128.1	RefSeq	gene	46373	46828	.	-	.	ID=gene51;Name=pO157p48;Dbxref=GeneID:1789721;gbkey=Gene;locus_tag=pO157p48
+NC_002128.1	RefSeq	CDS	46373	46828	.	-	0	ID=cds51;Name=NP_052655.1;Parent=gene51;Dbxref=Genbank:NP_052655.1,GeneID:1789721;gbkey=CDS;product=hypothetical protein;protein_id=NP_052655.1;transl_table=11
+NC_002128.1	RefSeq	gene	47130	47582	.	+	.	ID=gene52;Name=ssb;Dbxref=GeneID:1789738;gbkey=Gene;gene=ssb;locus_tag=pO157p49
+NC_002128.1	RefSeq	CDS	47130	47582	.	+	0	ID=cds52;Name=NP_052656.1;Parent=gene52;Note=similar to SwissProt accession number P18310%3B helix-destabilizing protein;Dbxref=Genbank:NP_052656.1,GeneID:1789738;gbkey=CDS;product=single-stranded DNA-binding protein;protein_id=NP_052656.1;transl_table=11
+NC_002128.1	RefSeq	gene	47639	47872	.	+	.	ID=gene53;Name=ECp054;Dbxref=GeneID:2717072;gbkey=Gene;locus_tag=ECp054
+NC_002128.1	RefSeq	CDS	47639	47872	.	+	0	ID=cds53;Name=NP_958724.1;Parent=gene53;Dbxref=Genbank:NP_958724.1,GeneID:2717072;gbkey=CDS;product=hypothetical protein;protein_id=NP_958724.1;transl_table=11
+NC_002128.1	RefSeq	gene	47938	49896	.	+	.	ID=gene54;Name=pO157p50;Dbxref=GeneID:1789702;gbkey=Gene;locus_tag=pO157p50
+NC_002128.1	RefSeq	CDS	47938	49896	.	+	0	ID=cds54;Name=NP_052657.1;Parent=gene54;Dbxref=Genbank:NP_052657.1,GeneID:1789702;gbkey=CDS;product=hypothetical protein;protein_id=NP_052657.1;transl_table=11
+NC_002128.1	RefSeq	gene	49951	50385	.	+	.	ID=gene55;Name=psiB;Dbxref=GeneID:1789688;gbkey=Gene;gene=psiB;locus_tag=pO157p51
+NC_002128.1	RefSeq	CDS	49951	50385	.	+	0	ID=cds55;Name=NP_052658.1;Parent=gene55;Note=responsible for plasmid SOS inhibition%3B similar to PIR accession number S01898;Dbxref=Genbank:NP_052658.1,GeneID:1789688;gbkey=CDS;product=plasmid SOS inhibition protein B;protein_id=NP_052658.1;transl_table=11
+NC_002128.1	RefSeq	gene	50382	51143	.	+	.	ID=gene56;Name=psiA;Dbxref=GeneID:1789722;gbkey=Gene;gene=psiA;locus_tag=pO157p52
+NC_002128.1	RefSeq	CDS	50382	51143	.	+	0	ID=cds56;Name=NP_052659.1;Parent=gene56;Note=PsiA;Dbxref=Genbank:NP_052659.1,GeneID:1789722;gbkey=CDS;product=plasmid SOS inhibition protein A;protein_id=NP_052659.1;transl_table=11
+NC_002128.1	RefSeq	gene	51375	51533	.	+	.	ID=gene57;Name=parB;Dbxref=GeneID:1789673;gbkey=Gene;gene=parB;locus_tag=pO157p53
+NC_002128.1	RefSeq	CDS	51375	51533	.	+	0	ID=cds57;Name=NP_052660.1;Parent=gene57;Note=similar to SwissProt accession number P16077;Dbxref=Genbank:NP_052660.1,GeneID:1789673;gbkey=CDS;product=small toxic polypeptide;protein_id=NP_052660.1;transl_table=11
+NC_002128.1	RefSeq	gene	51715	53688	.	+	.	ID=gene58;Name=nikB;Dbxref=GeneID:1789737;gbkey=Gene;gene=nikB;locus_tag=pO157p54
+NC_002128.1	RefSeq	CDS	51715	53688	.	+	0	ID=cds58;Name=NP_052661.1;Parent=gene58;Note=similar to PIR accession number B38529;Dbxref=Genbank:NP_052661.1,GeneID:1789737;gbkey=CDS;product=NikB;protein_id=NP_052661.1;transl_table=11
+NC_002128.1	RefSeq	gene	53756	54187	.	+	.	ID=gene59;Name=pO157p55;Dbxref=GeneID:1789666;gbkey=Gene;locus_tag=pO157p55
+NC_002128.1	RefSeq	CDS	53756	54187	.	+	0	ID=cds59;Name=NP_052662.1;Parent=gene59;Dbxref=Genbank:NP_052662.1,GeneID:1789666;gbkey=CDS;product=hypothetical protein;protein_id=NP_052662.1;transl_table=11
+NC_002128.1	RefSeq	gene	54761	55120	.	-	.	ID=gene60;Name=pO157p56;Dbxref=GeneID:1789692;gbkey=Gene;locus_tag=pO157p56
+NC_002128.1	RefSeq	CDS	54761	55120	.	-	0	ID=cds60;Name=NP_052663.1;Parent=gene60;Note=encoded in insertion sequence IS3;Dbxref=Genbank:NP_052663.1,GeneID:1789692;gbkey=CDS;product=transposase Tra5;protein_id=NP_052663.1;transl_table=11
+NC_002128.1	RefSeq	gene	55302	55712	.	+	.	ID=gene61;Name=pO157p57;Dbxref=GeneID:1789710;gbkey=Gene;locus_tag=pO157p57
+NC_002128.1	RefSeq	CDS	55302	55712	.	+	0	ID=cds61;Name=NP_052664.1;Parent=gene61;Note=encoded in insertion sequence element IS21%3B similar to SwissProt accession number P15025;Dbxref=Genbank:NP_052664.1,GeneID:1789710;gbkey=CDS;product=transposase;protein_id=NP_052664.1;transl_table=11
+NC_002128.1	RefSeq	gene	55981	65490	.	+	.	ID=gene62;Name=toxB;Dbxref=GeneID:1789667;gbkey=Gene;gene=toxB;locus_tag=pO157p58
+NC_002128.1	RefSeq	CDS	55981	65490	.	+	0	ID=cds62;Name=NP_052665.1;Parent=gene62;Note=similar to SwissProt accession number P18177;Dbxref=Genbank:NP_052665.1,GeneID:1789667;gbkey=CDS;product=toxin B;protein_id=NP_052665.1;transl_table=11
+NC_002128.1	RefSeq	gene	65582	65854	.	+	.	ID=gene63;Name=pO157p59;Dbxref=GeneID:1789744;gbkey=Gene;locus_tag=pO157p59
+NC_002128.1	RefSeq	CDS	65582	65854	.	+	0	ID=cds63;Name=NP_052666.1;Parent=gene63;Note=encoded in insertion sequence IS3;Dbxref=Genbank:NP_052666.1,GeneID:1789744;gbkey=CDS;product=transposase Tra5;protein_id=NP_052666.1;transl_table=11
+NC_002128.1	RefSeq	gene	65781	66284	.	-	.	ID=gene64;Name=IS629;Dbxref=GeneID:1789703;gbkey=Gene;gene=IS629;locus_tag=pO157p60
+NC_002128.1	RefSeq	CDS	65781	66284	.	-	0	ID=cds64;Name=NP_052667.1;Parent=gene64;Note=similar to SwissProt accession number P16941;Dbxref=Genbank:NP_052667.1,GeneID:1789703;gbkey=CDS;product=hypothetical protein;protein_id=NP_052667.1;transl_table=11
+NC_002128.1	RefSeq	region	66314	67729	.	+	.	ID=id3;Note=similar to helicase I;gbkey=misc_feature
+NC_002128.1	RefSeq	gene	67749	68495	.	+	.	ID=gene65;Name=traX;Dbxref=GeneID:1789740;gbkey=Gene;gene=traX;locus_tag=pO157p62
+NC_002128.1	RefSeq	CDS	67749	68495	.	+	0	ID=cds65;Name=NP_052669.1;Parent=gene65;Note=similar to SwissProt accession number P22710;Dbxref=Genbank:NP_052669.1,GeneID:1789740;gbkey=CDS;product=conjugal transfer pilus acetylation protein TraX;protein_id=NP_052669.1;transl_table=11
+NC_002128.1	RefSeq	gene	68554	69414	.	+	.	ID=gene66;Name=pO157p63;Dbxref=GeneID:1789674;gbkey=Gene;locus_tag=pO157p63
+NC_002128.1	RefSeq	CDS	68554	69414	.	+	0	ID=cds66;Name=NP_052670.1;Parent=gene66;Note=similar to SwissProt accession number Q99390;Dbxref=Genbank:NP_052670.1,GeneID:1789674;gbkey=CDS;product=hypothetical protein;protein_id=NP_052670.1;transl_table=11
+NC_002128.1	RefSeq	gene	69517	70077	.	+	.	ID=gene67;Name=finO;Dbxref=GeneID:1789697;gbkey=Gene;gene=finO;locus_tag=pO157p64
+NC_002128.1	RefSeq	CDS	69517	70077	.	+	0	ID=cds67;Name=NP_052671.1;Parent=gene67;Note=conjugal transfer repressor%3B similar to SwissProt accession number P08315;Dbxref=Genbank:NP_052671.1,GeneID:1789697;gbkey=CDS;product=conjugal transfer fertility inhibition protein FinO;protein_id=NP_052671.1;transl_table=11
+NC_002128.1	RefSeq	gene	70210	70422	.	+	.	ID=gene68;Name=ECp070;Dbxref=GeneID:2717079;gbkey=Gene;locus_tag=ECp070
+NC_002128.1	RefSeq	CDS	70210	70422	.	+	0	ID=cds68;Name=NP_958725.1;Parent=gene68;Dbxref=Genbank:NP_958725.1,GeneID:2717079;gbkey=CDS;product=hypothetical protein;protein_id=NP_958725.1;transl_table=11
+NC_002128.1	RefSeq	gene	70667	71128	.	+	.	ID=gene69;Name=pO157p65;Dbxref=GeneID:1789676;gbkey=Gene;locus_tag=pO157p65
+NC_002128.1	RefSeq	CDS	70667	71128	.	+	0	ID=cds69;Name=NP_052672.1;Parent=gene69;Note=similar to SwissProt accession number Q99342;Dbxref=Genbank:NP_052672.1,GeneID:1789676;gbkey=CDS;product=hypothetical protein;protein_id=NP_052672.1;transl_table=11
+NC_002128.1	RefSeq	gene	71174	71383	.	+	.	ID=gene70;Name=ECp072;Dbxref=GeneID:2717074;gbkey=Gene;locus_tag=ECp072
+NC_002128.1	RefSeq	CDS	71174	71383	.	+	0	ID=cds70;Name=NP_958726.1;Parent=gene70;Dbxref=Genbank:NP_958726.1,GeneID:2717074;gbkey=CDS;product=hypothetical protein;protein_id=NP_958726.1;transl_table=11
+NC_002128.1	RefSeq	gene	71421	71759	.	+	.	ID=gene71;Name=pO157p66;Dbxref=GeneID:1789675;gbkey=Gene;locus_tag=pO157p66
+NC_002128.1	RefSeq	CDS	71421	71759	.	+	0	ID=cds71;Name=NP_052673.1;Parent=gene71;Note=similar to PIR accession number S28661;Dbxref=Genbank:NP_052673.1,GeneID:1789675;gbkey=CDS;product=hypothetical protein;protein_id=NP_052673.1;transl_table=11
+NC_002128.1	RefSeq	gene	71999	72253	.	+	.	ID=gene72;Name=repA2;Dbxref=GeneID:1789682;gbkey=Gene;gene=repA2;locus_tag=pO157p67
+NC_002128.1	RefSeq	CDS	71999	72253	.	+	0	ID=cds72;Name=NP_052674.1;Parent=gene72;Note=similar to SwissProt accession number P03847;Dbxref=Genbank:NP_052674.1,GeneID:1789682;gbkey=CDS;product=replication protein;protein_id=NP_052674.1;transl_table=11
+NC_002128.1	RefSeq	gene	72556	73413	.	+	.	ID=gene73;Name=repA1;Dbxref=GeneID:1789669;gbkey=Gene;gene=repA1;locus_tag=pO157p68
+NC_002128.1	RefSeq	CDS	72556	73413	.	+	0	ID=cds73;Name=NP_052675.1;Parent=gene73;Note=RepA;Dbxref=Genbank:NP_052675.1,GeneID:1789669;gbkey=CDS;product=replication protein;protein_id=NP_052675.1;transl_table=11
+NC_002128.1	RefSeq	gene	74325	74609	.	+	.	ID=gene74;Name=pO157p69;Dbxref=GeneID:1789719;gbkey=Gene;locus_tag=pO157p69
+NC_002128.1	RefSeq	CDS	74325	74609	.	+	0	ID=cds74;Name=NP_052676.1;Parent=gene74;Dbxref=Genbank:NP_052676.1,GeneID:1789719;gbkey=CDS;product=hypothetical protein;protein_id=NP_052676.1;transl_table=11
+NC_002128.1	RefSeq	gene	74609	74884	.	+	.	ID=gene75;Name=pO157p70;Dbxref=GeneID:1789745;gbkey=Gene;locus_tag=pO157p70
+NC_002128.1	RefSeq	CDS	74609	74884	.	+	0	ID=cds75;Name=NP_052677.1;Parent=gene75;Dbxref=Genbank:NP_052677.1,GeneID:1789745;gbkey=CDS;product=hypothetical protein;protein_id=NP_052677.1;transl_table=11
+NC_002128.1	RefSeq	gene	74979	75185	.	+	.	ID=gene76;Name=pO157p71;Dbxref=GeneID:1789723;gbkey=Gene;locus_tag=pO157p71
+NC_002128.1	RefSeq	CDS	74979	75185	.	+	0	ID=cds76;Name=NP_052678.1;Parent=gene76;Note=stability %28stb%29 locus of IncFII plasmid NR1%3B similar to SwissProt accession number P11907;Dbxref=Genbank:NP_052678.1,GeneID:1789723;gbkey=CDS;product=hypothetical protein;protein_id=NP_052678.1;transl_table=11
+NC_002128.1	RefSeq	region	75270	75650	.	-	.	ID=id4;Note=similar to transposase;gbkey=misc_feature
+NC_002128.1	RefSeq	gene	76062	76526	.	-	.	ID=gene77;Name=pO157p74;Dbxref=GeneID:1789699;gbkey=Gene;locus_tag=pO157p74
+NC_002128.1	RefSeq	CDS	76062	76526	.	-	0	ID=cds77;Name=NP_052681.1;Parent=gene77;Note=encoded in insertion sequence IS91%3B similar to PIR accession number S23782;Dbxref=Genbank:NP_052681.1,GeneID:1789699;gbkey=CDS;product=transposase;protein_id=NP_052681.1;transl_table=11
+NC_002128.1	RefSeq	gene	79689	80576	.	+	.	ID=gene78;Name=pO157p77;Dbxref=GeneID:1789701;gbkey=Gene;locus_tag=pO157p77
+NC_002128.1	RefSeq	CDS	79689	80576	.	+	0	ID=cds78;Name=NP_052684.1;Parent=gene78;Note=encoded in insertion sequence IS629%3B similar to SwissProt accession number P16942;Dbxref=Genbank:NP_052684.1,GeneID:1789701;gbkey=CDS;product=transposase;protein_id=NP_052684.1;transl_table=11
+NC_002128.1	RefSeq	gene	80757	84659	.	+	.	ID=gene79;Name=espP;Dbxref=GeneID:1789732;gbkey=Gene;gene=espP;locus_tag=pO157p78
+NC_002128.1	RefSeq	CDS	80757	84659	.	+	0	ID=cds79;Name=NP_052685.1;Parent=gene79;Note=extracellular serine protease;Dbxref=Genbank:NP_052685.1,GeneID:1789732;gbkey=CDS;product=EspP;protein_id=NP_052685.1;transl_table=11
+NC_002128.1	RefSeq	gene	85124	85396	.	-	.	ID=gene80;Name=ECp088.2c;Dbxref=GeneID:2717078;gbkey=Gene;locus_tag=ECp088.2c
+NC_002128.1	RefSeq	CDS	85124	85396	.	-	0	ID=cds80;Name=NP_958727.1;Parent=gene80;Dbxref=Genbank:NP_958727.1,GeneID:2717078;gbkey=CDS;product=hypothetical protein;protein_id=NP_958727.1;transl_table=11
+NC_002128.1	RefSeq	gene	87222	87659	.	+	.	ID=gene81;Name=pO157p79;Dbxref=GeneID:1789680;gbkey=Gene;locus_tag=pO157p79
+NC_002128.1	RefSeq	CDS	87222	87659	.	+	0	ID=cds81;Name=NP_052686.1;Parent=gene81;Dbxref=Genbank:NP_052686.1,GeneID:1789680;gbkey=CDS;product=hypothetical protein;protein_id=NP_052686.1;transl_table=11
+NC_002128.1	RefSeq	gene	87659	88765	.	+	.	ID=gene82;Name=pO157p80;Dbxref=GeneID:1789671;gbkey=Gene;locus_tag=pO157p80
+NC_002128.1	RefSeq	CDS	87659	88765	.	+	0	ID=cds82;Name=NP_052687.1;Parent=gene82;Dbxref=Genbank:NP_052687.1,GeneID:1789671;gbkey=CDS;product=RfbU-like protein;protein_id=NP_052687.1;transl_table=11
+NC_002128.1	RefSeq	gene	88855	90576	.	+	.	ID=gene83;Name=pO157p81;Dbxref=GeneID:1789713;gbkey=Gene;locus_tag=pO157p81
+NC_002128.1	RefSeq	CDS	88855	90576	.	+	0	ID=cds83;Name=NP_052688.1;Parent=gene83;Note=similar to SwissProt accession number P32678;Dbxref=Genbank:NP_052688.1,GeneID:1789713;gbkey=CDS;product=hypothetical protein;protein_id=NP_052688.1;transl_table=11
+NC_002128.1	RefSeq	gene	90650	91648	.	+	.	ID=gene84;Name=pO157p82;Dbxref=GeneID:1789687;gbkey=Gene;locus_tag=pO157p82
+NC_002128.1	RefSeq	CDS	90650	91648	.	+	0	ID=cds84;Name=NP_052689.1;Parent=gene84;Note=Transfers myristate or laurate%2C activated on ACP%2C to the lipid IVA moiety of %28KDO%292-%28lauroyl%29-lipid IVA;Dbxref=Genbank:NP_052689.1,GeneID:1789687;gbkey=CDS;product=lipid A biosynthesis %28KDO%292-%28lauroyl%29-lipid IVA acyltransferase;protein_id=NP_052689.1;transl_table=11
+###

@@ -5,8 +5,8 @@
 #usage: <input from read_bam.py> <output file>
 
 library(xtable)
+library(data.table)
 args<-commandArgs(TRUE)
-
 
 do_it <-function(args){
   indels<-read.table(args[1], sep="\t", header=TRUE, 
@@ -31,6 +31,7 @@ do_it <-function(args){
   write.csv((summary[,c(1,2,3,5,6,7,8,9)]), file = args[3], quote=T)
 
 }
+
 args[2]=paste(args[1],".res",sep="")
 args[3]=paste(args[1],".csv",sep="")
 do_it(args)

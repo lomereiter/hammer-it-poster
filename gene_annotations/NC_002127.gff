@@ -1,0 +1,14 @@
+##gff-version 3
+#!gff-spec-version 1.20
+#!processor NCBI annotwriter
+##sequence-region NC_002127.1 1 3306
+##species http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=386585
+NC_002127.1	RefSeq	region	1	3306	.	+	.	ID=id0;Dbxref=taxon:386585;Is_circular=true;gbkey=Src;genome=plasmid;mol_type=genomic DNA;note=RIMD 0509952 is a strain of enterohemorrhagic E. coli%2C EHEC O157:H7;plasmid-name=pOSAK1;serovar=O157:H7;strain=Sakai;substrain=RIMD 0509952
+NC_002127.1	RefSeq	region	1	3306	.	+	.	ID=id1;Note=REFSEQ gene predictions performed by GeneMark 2.4%2FGeneMark.hmm 2.0 with comparison to original submitter provided annotation.;gbkey=Comment
+NC_002127.1	RefSeq	gene	413	736	.	+	.	ID=gene0;Name=mobA;Dbxref=GeneID:1789662;gbkey=Gene;gene=mobA;locus_tag=pOSAK1_01
+NC_002127.1	RefSeq	CDS	413	736	.	+	0	ID=cds0;Name=NP_052604.1;Parent=gene0;Dbxref=Genbank:NP_052604.1,GeneID:1789662;gbkey=CDS;product=plasmid mobilization;protein_id=NP_052604.1;transl_table=11
+NC_002127.1	RefSeq	gene	971	1351	.	-	.	ID=gene1;Name=pOSAK1_02;Dbxref=GeneID:1789661;gbkey=Gene;locus_tag=pOSAK1_02
+NC_002127.1	RefSeq	CDS	971	1351	.	-	0	ID=cds1;Name=NP_052605.1;Parent=gene1;Dbxref=Genbank:NP_052605.1,GeneID:1789661;gbkey=CDS;product=hypothetical protein;protein_id=NP_052605.1;transl_table=11
+NC_002127.1	RefSeq	gene	1348	2388	.	-	.	ID=gene2;Name=pOSAK1_03;Dbxref=GeneID:1789663;gbkey=Gene;locus_tag=pOSAK1_03
+NC_002127.1	RefSeq	CDS	1348	2388	.	-	0	ID=cds2;Name=NP_052606.1;Parent=gene2;Dbxref=Genbank:NP_052606.1,GeneID:1789663;gbkey=CDS;product=hypothetical protein;protein_id=NP_052606.1;transl_table=11
+###

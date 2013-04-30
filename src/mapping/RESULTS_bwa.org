@@ -7,18 +7,18 @@ library(reshape2)
     colnames(data) <- c("mapped", "subst", "ins", "del", 
                         "indel_100bp", "indel_read", 
                         "subst_100bp", "subst_read", "cov")
-    data$reads <- c("before correction",
-                    "after correction (trimming uncorrected ends)",
-                    "after correction (keeping uncorrected ends)")
+    dataset.types <- c("before correction",
+                       "after correction (trimming uncorrected ends)",
+                       "after correction (preserving uncorrected ends)")
+    data$type <- factor(dataset.types, levels=dataset.types)
     data$indel_100bp <- as.numeric(data$indel_100bp)
     data$subst_100bp <- as.numeric(data$subst_100bp)
     melt(data)
   }
   
-  makePlot <- function(df) {
-    data <- makeDataFrame(df)
-    ggplot(data=data, aes(x=data$variable, y=data$value, 
-                          fill=data$reads, group=data$reads)) + 
+  makePlot <- function(emacs_df) {
+    df <- makeDataFrame(emacs_df)
+    ggplot(data=df, aes(x=variable, y=value, fill=reads, group=reads)) + 
       geom_bar(stat="identity", position="dodge")
   }
 #+end_src
@@ -50,12 +50,6 @@ makePlot(df)
 | after correction  |      2345321 |  34914 |      77527 |    197237 |        0.058 |       0.117 |        0.007 |       0.015 |    84.55 |
 | with ends         |      2344944 |  84496 |     152071 |    233870 |        0.081 |       0.165 |        0.018 |       0.036 |    84.83 |
 |-------------------+--------------+--------+------------+-----------+--------------+-------------+--------------+-------------+----------|
-#+begin_src R :var df=300bp-sakai :results output graphics :session :exports results :file 300bp-sakai.png
-makePlot(df)
-#+end_src
-
-#+results:
-[[file:300bp-sakai.png]]
 
 * 200bp reads (316 chip), kmer_qual_threshold=1e-10
 
@@ -67,12 +61,6 @@ makePlot(df)
 | after correction  |      3162128 |  19917 |     109817 |    274260 |        0.071 |       0.121 |        0.004 |       0.006 |    96.73 |
 | with ends         |      3162088 |  34087 |     142269 |    289978 |        0.080 |       0.137 |        0.006 |       0.011 |    96.88 |
 |-------------------+--------------+--------+------------+-----------+--------------+-------------+--------------+-------------+----------|
-#+begin_src R :var df=200bp-sakai :results output graphics :session :exports results :file 200bp-sakai.png
-makePlot(df)
-#+end_src
-
-#+results:
-[[file:200bp-sakai.png]]
 
 * 100bp reads (316 chip), kmer_qual_threshold=1e-3
 
@@ -84,12 +72,6 @@ makePlot(df)
 | after correction  |      1471680 |  29266 |      17258 |     50341 |        0.042 |       0.046 |        0.018 |       0.020 |    28.92 |
 | with ends         |      1469151 |  47942 |      34708 |     61365 |        0.059 |       0.065 |        0.030 |       0.033 |    28.99 |
 |-------------------+--------------+--------+------------+-----------+--------------+-------------+--------------+-------------+----------|
-#+begin_src R :var df=100bp-sakai :results output graphics :session :exports results :file 100bp-sakai.png
-makePlot(df)
-#+end_src
-
-#+results:
-[[file:100bp-sakai.png]]
 
 * 400bp reads (314v2 chip), kmer_qual_threshold=1e-4
   
@@ -101,12 +83,6 @@ makePlot(df)
 | after correction  |       455402 |   9846 |      15810 |     37874 |        0.037 |       0.118 |        0.007 |       0.022 |    31.74 |
 | (with ends)       |       453987 |  14706 |      24571 |     40676 |        0.043 |       0.144 |        0.010 |       0.032 |    31.73 |
 |-------------------+--------------+--------+------------+-----------+--------------+-------------+--------------+-------------+----------|
-#+begin_src R :var df=400bp-dh10b :results output graphics :session :exports results :file 400bp-dh10b.png
-makePlot(df)
-#+end_src
-
-#+results:
-[[file:400bp-dh10b.png]]
 
 * 200bp reads (314v2 chip), kmer_qual_threshold=1e-3
 
@@ -118,10 +94,26 @@ makePlot(df)
 | after correction  |       637092 |   4966 |       7848 |     62622 |        0.045 |       0.111 |        0.003 |       0.008 |    33.24 |
 | (with ends)       |       636616 |   7853 |      12608 |     63781 |        0.049 |       0.120 |        0.005 |       0.012 |    33.26 |
 |-------------------+--------------+--------+------------+-----------+--------------+-------------+--------------+-------------+----------|
-#+begin_src R :var df=200bp-dh10b :results output graphics :session :exports results :file 200bp-dh10b.png
-makePlot(df)
+
+#+begin_src R :session :results graphics :file error_rate.pdf :width 12 :height 8 :var df4s=400bp-sakai :var df3s=300bp-sakai :var df2s=200bp-sakai :var df1s=100bp-sakai :var df4d=400bp-dh10b :var df2d=200bp-dh10b
+  dataframes <- lapply(list(df2d, df1s, df3s, df4d, df2s, df4s), makeDataFrame)
+  df <- melt(dataframes)
+  
+  dataset.names <- c("DH10B 200bp reads (314v2 chip)",
+                     "Sakai 100bp reads (316 chip)",
+                     "Sakai 300bp reads (1/2 318 chip)",
+                     "DH10B 400bp reads (314v2 chip)",
+                     "Sakai 200bp reads (316 chip)",
+                     "Sakai 400bp reads (318 chip)")
+     
+  df$dataset <- factor(dataset.names[df$L1], levels=dataset.names)
+  
+  ggplot(data=df, aes(x=factor(variable, labels=c("Indels", "Mismatches")), y=value, fill=type, group=type)) + 
+    geom_bar(stat="identity", position="dodge") +
+    facet_wrap( ~ dataset) +
+    xlab("Dataset") +
+    ylab("Average number of errors per 100 base pairs") +
+    opts(title="Error rates before and after correction",
+         legend.direction="horizontal",
+         legend.position="top") + labs(fill="")
 #+end_src
-
-#+results:
-[[file:200bp-dh10b.png]]
-

@@ -33,12 +33,6 @@ library(reshape2)
 | after correction  |      4868796 |  146893 |     634049 |    742307 |        0.103 |       0.283 |        0.011 |       0.030 |    239.3 |
 | with ends         |      4868437 |  232151 |     805217 |    838064 |        0.122 |       0.338 |        0.017 |       0.048 |    240.0 |
 |-------------------+--------------+---------+------------+-----------+--------------+-------------+--------------+-------------+----------|
-#+begin_src R :var df=400bp-sakai :results output graphics :session :exports results :file 400bp-sakai.png
-makePlot(df)
-#+end_src
-
-#+results:
-[[file:400bp-sakai.png]]
 
 * 300bp reads (1/2 318 chip), kmer_qual_threshold=1e-9
 

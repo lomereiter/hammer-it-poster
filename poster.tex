@@ -32,18 +32,19 @@ error correction}
 
       We evaluated Hammer-IT on 6 publicly available datasets,
       using the same pipeline as the authors of the recently published
-      article ``Updating benchtop sequencing performance comparison''.
+      article ``Updating benchtop sequencing performance comparison''
+      (\textit{Nature~Biotechnology,~v.~31,~no.~4}).
       In that article, error rate in four Ion~Torrent datasets has
       been assessed. We used the same data plus two extra datasets from
-      314v2~chip, which were published recently on Ion~Community~Portal.
+      314v2~chip, which were recently became available on Ion~Community~Portal.
       
       Indel/mismatch error rates were calculated for uniquely mapped
       reads before and after correction. For each dataset, correction
       was done in two ways. In the first setup, trimming was done for 
       read ends that couldn't be corrected due to lack of good k-mers, 
       while in the second one such read ends were preserved in the
-      output. In all cases, change in read coverage after correction
-      stayed within 0.4\%.
+      output. Relative change in read coverage after
+      correction stayed within 0.4\% in all cases.
 
       \begin{figure}
         \includegraphics[height=30em]{src/mapping/error_rate}
@@ -72,28 +73,31 @@ error correction}
         \For{\textbf{each} \textit{read}}
       \item \hspace{\algorithmicindent}\emph{(Producing contiguous corrected parts of \emph{read})}
           \For{\textbf{each} homopolymer-space \textit{kmer} from the read}
-            \State \textit{center} $\gets$ center of the cluster to which \textit{kmer} belongs
+            \State \textit{center} $\gets$ center of the cluster to which \textit{kmer} belongs;
             \If{\textit{center} quality is more than user-specified threshold \textbf{and}\\
               \hspace{4.0em}\textit{center} bases agree with the previous center}
-              \State include \textit{center} into consensus score calculation
+              \State include \textit{center} into consensus score calculation;
             \Else
-              \State yield new corrected part from current consensus
-              \State estimate its position on the read
-              \State reset consensus table and start new part
+              \State yield new corrected part from current consensus;
+              \State estimate its position on the read;
+              \State reset consensus table and start new part;
             \EndIf
           \EndFor
       \item \hspace{\algorithmicindent}\emph{(Combining corrected parts)}
           \For{\textbf{each} corrected \textit{part}}
-            \State trim homopolymer runs with low consensus score from both ends
-            \State align last 8 bases against the read sequence
-            \State align first 8 bases of the next part
-            \If{there is a gap between the two parts}
-              \State copy read bases as is
+            \State trim homopolymer runs with low consensus score from both ends;
+            \State align last 8 homopolymer runs against the read sequence;
+            \State align first 8 runs of the next part;
+            \If{there is a gap on the read between the two parts}
+              \State copy read homopolymer runs as is;
             \Else
               \State select homopolymer runs with higher consensus score\\
-          \hspace{6.0em}from the intersection of the two parts
+          \hspace{6.0em}from the intersection of the two parts;
             \EndIf
           \EndFor
+      \item \hspace{\algorithmicindent}\emph{(Optionally, attaching uncorrected end)}
+           \State align last 8 runs of the last chunk against the read sequence;
+           \State append read homopolymer runs after the last aligned run.
         \EndFor
       \end{algorithmic}
     \end{column}

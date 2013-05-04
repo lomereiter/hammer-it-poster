@@ -1,12 +1,16 @@
+\PassOptionsToPackage{dvipsnames,table}{xcolor}
 \documentclass{beamer}
 \usepackage[utf8x]{inputenc}
 \usepackage[english]{babel}
 \usepackage{hyperref}
+\usepackage{xcolor}
 \usepackage{graphicx}
 \usetheme{Warsaw}
 \usepackage[orientation=portrait,size=a0,scale=1.0]{beamerposter}
 \usepackage{algpseudocode}
 
+\setbeamertemplate{caption}[numbered]
+ 
 \newcommand{\columncaption}[1]{
 \begin{center}
   {\huge #1}
@@ -20,12 +24,51 @@ error correction}
 \begin{document}
 \begin{frame}
 
-\begin{block}{Introduction}
+\begin{block}{}
 
+  \begin{columns}[t]
+    \begin{column}{0.32\textwidth}
+      \columncaption{Introduction}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \columncaption{IonTorrent error profile}
+      Corrected flow signal intensities are available in BAM files
+      produced by versions of Ion Torrent Suite prior to 3.4. Called
+      homopolymer length is obtained as corrected flow signal
+      intensity rounded to the nearest integer.
 
+      We have studied flow signal intensity distributions around
+      insertion/deletion sites. File B7-295.bam, downloaded from Ion
+      Community website, contained 4.6M~insertions, 5.0M~deletions,
+      and 1.5M~mismatches.
+      
+      Overwhelming majority of errors turned out to be
+      insertions/deletions of length~1, occuring when flow signal
+      intensity is approximately halfway between two adjacent
+      integers.
+
+      \begin{figure}[h!]
+        \caption{Flow signal intensities at insertion sites}
+        \includegraphics[height=10em, width=\textwidth]{images/overcalls}
+      \end{figure}
+
+      \begin{figure}[h!]
+        \caption{Flow signal intensities at deletion sites}
+        \includegraphics[height=10em, width=\textwidth]{images/undercalls}
+      \end{figure}
+
+      More detailed analysis of errors in IonTorrent data can be found
+      in the article
+      ``Shining a Light on Dark Sequencing: Characterising Errors in
+      Ion Torrent PGM Data'' \emph{(PLoS~Comput~Biol~9(4))}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \columncaption{Methods}
+    \end{column}
+  \end{columns}
 \end{block}
 
-\begin{block}{Results}
+\begin{block}{}
   \begin{columns}[t]
     \begin{column}{0.47\textwidth}
       \columncaption{Mapping results}
@@ -33,10 +76,10 @@ error correction}
       We evaluated Hammer-IT on 6 publicly available datasets,
       using the same pipeline as the authors of the recently published
       article ``Updating benchtop sequencing performance comparison''
-      (\textit{Nature~Biotechnology,~v.~31,~no.~4}).
+      \emph{(Nature~Biotechnology,~v.~31,~no.~4)}.
       In that article, error rate in four Ion~Torrent datasets has
       been assessed. We used the same data plus two extra datasets from
-      314v2~chip, which were recently became available on Ion~Community~Portal.
+      314v2~chip, which recently became available on Ion~Community~Portal.
       
       Indel/mismatch error rates were calculated for uniquely mapped
       reads before and after correction. For each dataset, correction
@@ -47,23 +90,91 @@ error correction}
       correction stayed within 0.4\% in all cases.
 
       \begin{figure}
-        \includegraphics[height=30em]{src/mapping/error_rate}
+        \caption{Error rates before and after correction}
+        \includegraphics[width=\textwidth]{images/error_rate}
       \end{figure}
     \end{column}
     \begin{column}{0.47\textwidth}
+      \columncaption{K-mer counts}
     \end{column}
   \end{columns}
+
 \end{block}
 
-\begin{block}{Algorithms}
+\begin{block}{}
   \begin{columns}[t]
 
     \begin{column}{0.32\textwidth}  
       \columncaption{Distance calculation}
     \end{column}
 
-    \begin{column}{0.32\textwidth}  
-      \columncaption{Homopolymer-space k-mer clustering}
+    \begin{column}{0.32\textwidth}
+      \columncaption{K-mer clustering}
+      \begin{columns}[t]
+        \begin{column}{0.70\textwidth}
+          *FIXME* here goes description of clustering algorithm, maybe
+          also a plot showing cluster size distribution.
+        \end{column}
+        \begin{column}{0.30\textwidth}
+          \begin{table}[h!]
+            \scalebox{0.52}{
+              \begin{tabular}{|l|r|r|}
+                \textbf{16-mer} & \textbf{n} & \textbf{qual.} \\ \hline 
+                GTGTACATGTCGATGC & \cellcolor{green!100!red!20!white} 113 & \cellcolor{green!100!red!20!white} 1.00 \\
+                GTGTACATGTCGATGT & \cellcolor{green!20!red!20!white} 23 & \cellcolor{green!90!red!20!white} 0.90 \\
+                GTGTACATGCGATGCT & \cellcolor{green!6!red!20!white} 7 & \cellcolor{green!80!red!20!white} 0.80 \\
+                GTGTACATGTCGTGCT & \cellcolor{green!5!red!20!white} 6 & \cellcolor{green!33!red!20!white} 0.33 \\
+                GTGTACATGTCATGCT & \cellcolor{green!5!red!20!white} 6 & \cellcolor{green!31!red!20!white} 0.31 \\
+                CTTGTACATGTCGATGC & \cellcolor{green!5!red!20!white} 6 & \cellcolor{green!26!red!20!white} 0.26 \\
+                GTGTACATGTCTGCTC & \cellcolor{green!4!red!20!white} 4 & \cellcolor{green!28!red!20!white} 0.28 \\
+                GTGTACATGTCGATTGC & \cellcolor{green!4!red!20!white} 4 & \cellcolor{green!12!red!20!white} 0.12 \\
+                GTGTACATGTGGATGCT & \cellcolor{green!4!red!20!white} 4 & \cellcolor{green!9!red!20!white} 0.09 \\
+                GTGTACATGTCCGATGC & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!41!red!20!white} 0.41 \\
+                GTGTACATGTCGAGCT & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!14!red!20!white} 0.14 \\
+                GTGTACATGTCGAATGC & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!12!red!20!white} 0.12 \\
+                GTGTACATGTCGTGTC & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!10!red!20!white} 0.10 \\
+                GTGTACATGCGATGCA & \cellcolor{green!2!red!20!white} 2 & \cellcolor{green!28!red!20!white} 0.28 \\
+                GAGTACACTGTCGCTG & \cellcolor{green!2!red!20!white} 2 & \cellcolor{green!4!red!20!white} 0.04 \\
+                GTGTACATGTCGATGA & \cellcolor{green!2!red!20!white} 2 & \cellcolor{green!3!red!20!white} 0.03 \\
+                GTGTATACATGTCGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!37!red!20!white} 0.37 \\
+                GTGTACATGCGATGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!32!red!20!white} 0.32 \\
+                GTGTACACTGTCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!25!red!20!white} 0.25 \\
+                GTGTACACTGTCCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!13!red!20!white} 0.13 \\
+                GTGTACATGTCAATGTC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!10!red!20!white} 0.10 \\
+                GTGTACATGTCATGCCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!9!red!20!white} 0.09 \\
+                CAGTACACTGTCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
+                GTGTACATGCGATGCCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
+                GTGTACATGTCGAGCCG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
+                GTGTACATGTCGAGGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
+                GAGTACACACCACTCTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!6!red!20!white} 0.06 \\
+                GTGTACATGTCATGCGG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!5!red!20!white} 0.05 \\
+                GTGTACATGTCGTGCA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!4!red!20!white} 0.04 \\
+                GTGTACATGTCGGATGC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!4!red!20!white} 0.04 \\
+                GTGTACATGCGCTGTC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!4!red!20!white} 0.04 \\
+                GTGTACATGTCGGATGCC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
+                GTGTACATGTCATGTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
+                CAGTACACTGTAGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
+                GTGTACAATGTCGTGCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
+                ATGTACGCTGTCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
+                GAGTATACATGTCGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
+                GTGTACATGTCTGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
+                GTGTACATGTCGAATGT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
+                GTTGTTACATGTCGATGC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
+                GTGTATACATGTCATG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+                CAGTACACTGTCGCTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+                GTGTACATGTCGACTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+                GTGTACATGTCGATTCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+                GTGTACATGTCGAGTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+                GTGTTACATGTCGATGC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+                ATGTACGCTGTAGCTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+                ATGTACGCTGTAGCTGG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+                GTGTTACATGTGGATGCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+                GTGTACATGTCGACAGG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!0!red!20!white} 0.00 \\
+                \hline\end{tabular}
+              }
+          \end{table}
+        \end{column}
+      \end{columns}
     \end{column}
 
     \begin{column}{0.32\textwidth}

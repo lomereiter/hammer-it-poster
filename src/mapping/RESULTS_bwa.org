@@ -1,5 +1,6 @@
 #+begin_src R :session :results silent
 library(ggplot2)
+library(grid)
 library(reshape2)
 
   makeDataFrame <- function(df) {
@@ -8,8 +9,8 @@ library(reshape2)
                         "indel_100bp", "indel_read", 
                         "subst_100bp", "subst_read", "cov")
     dataset.types <- c("before correction",
-                       "after correction (trimming uncorrected ends)",
-                       "after correction (preserving uncorrected ends)")
+                       "after correction\n(trimming uncorrected ends)",
+                       "after correction\n(preserving uncorrected ends)")
     data$type <- factor(dataset.types, levels=dataset.types)
     data$indel_100bp <- as.numeric(data$indel_100bp)
     data$subst_100bp <- as.numeric(data$subst_100bp)
@@ -89,25 +90,42 @@ library(reshape2)
 | (with ends)       |       636616 |   7853 |      12608 |     63781 |        0.049 |       0.120 |        0.005 |       0.012 |    33.26 |
 |-------------------+--------------+--------+------------+-----------+--------------+-------------+--------------+-------------+----------|
 
-#+begin_src R :session :results graphics :file error_rate.pdf :width 12 :height 8 :var df4s=400bp-sakai :var df3s=300bp-sakai :var df2s=200bp-sakai :var df1s=100bp-sakai :var df4d=400bp-dh10b :var df2d=200bp-dh10b
-  dataframes <- lapply(list(df2d, df1s, df3s, df4d, df2s, df4s), makeDataFrame)
-  df <- melt(dataframes)
-  
-  dataset.names <- c("DH10B 200bp reads (314v2 chip)",
-                     "Sakai 100bp reads (316 chip)",
-                     "Sakai 300bp reads (1/2 318 chip)",
-                     "DH10B 400bp reads (314v2 chip)",
-                     "Sakai 200bp reads (316 chip)",
-                     "Sakai 400bp reads (318 chip)")
-     
-  df$dataset <- factor(dataset.names[df$L1], levels=dataset.names)
-  
-  ggplot(data=df, aes(x=factor(variable, labels=c("Indels", "Mismatches")), y=value, fill=type, group=type)) + 
-    geom_bar(stat="identity", position="dodge") +
-    facet_wrap( ~ dataset) +
-    xlab("Dataset") +
-    ylab("Average number of errors per 100 base pairs") +
-    opts(title="Error rates before and after correction",
-         legend.direction="horizontal",
-         legend.position="top") + labs(fill="")
+#+begin_src R :session :results graphics :file "../../images/error_rate.pdf" :width 9 :height 4 :var df4s=400bp-sakai :var df3s=300bp-sakai :var df2s=200bp-sakai :var df1s=100bp-sakai :var df4d=400bp-dh10b :var df2d=200bp-dh10b
+    dataframes <- lapply(list(df2d, df1s, df3s, df4d, df2s, df4s), makeDataFrame)
+    df <- melt(dataframes)
+    
+    dataset.names <- c("DH10B 200bp reads (314v2 chip)",
+                       "Sakai 100bp reads (316 chip)",
+                       "Sakai 300bp reads (1/2 318 chip)",
+                       "DH10B 400bp reads (314v2 chip)",
+                       "Sakai 200bp reads (316 chip)",
+                       "Sakai 400bp reads (318 chip)")
+       
+    # df$dataset <- factor(dataset.names[df$L1], levels=dataset.names)
+    df$dataset <- factor(dataset.names[df$L1], levels=dataset.names[rev(c(2,5,3,6,1,4))])
+    
+    df$error.type <- factor(df$variable, labels=c("Indels", "Mismatches"))
+    
+    ## ggplot(data=df, aes(x=error.type), y=value, fill=type, group=type)) + 
+    ##   geom_bar(stat="identity", position="dodge") +
+    ##   facet_wrap( ~ dataset) +
+    ##   xlab("") +
+    ##   ylab("Average number of errors per 100 base pairs") +
+    ##   labs(fill="") +
+    ##   theme(legend.direction="horizontal",
+    ##        legend.position="top", legend.title=element_blank())
+    
+    ggplot(data=df, aes(x=value, y=dataset)) + 
+      geom_point(aes(colour=type), size=4, alpha=0.8) +
+      facet_grid(. ~ error.type, scales="free") +
+      ylab("") +
+      xlab("Average number of errors per 100 base pairs") +
+      labs(fill="") +
+      theme(legend.box="vertical",
+            legend.position="top", legend.title=element_blank()) +
+      scale_x_sqrt()
 #+end_src
+
+#+results:
+[[file:../../images/error_rate.pdf]]
+

@@ -1,0 +1,44 @@
+#+begin_src R :results graphics :session :file images/error_rate_vs_offset.pdf :width 5 :height 4
+    freqs <- function(df) {
+      df$subst.freq <- df$subst/df$total
+      df$ins.freq <- df$ins/df$total
+      df$del.freq <- df$del/df$total
+      df$indel.freq <- (df$ins + df$del)/df$total
+      df
+    }
+  
+    library(reshape2)
+    read.errorrates <- function(dataset.name) {
+      df.before <- read.table(paste("results/", dataset.name, "/raw/errorrate.dat", sep=""), header=T)
+      df.after <- read.table(paste("results/", dataset.name, "/corrected_untrimmed/errorrate.dat", sep=""), header=T)
+      df.f.before <- freqs(df.before)
+      df.f.after <- freqs(df.after)
+      df.f.before$type <- "Before correction"
+      df.f.after$type <- "After correction"
+      df.f <- rbind(df.f.before, df.f.after)
+      melt(df.f, c("offset", "type"), c("indel.freq", "subst.freq"))
+    }
+  
+    library(ggplot2)
+    library(grid)
+    plot.errorrates <- function(dataset.name, read.length) {
+      df <- read.errorrates(dataset.name)
+      df <- df[df$value > 0, ]
+      df$variable <- factor(df$variable, levels=c("indel.freq", "subst.freq"), labels=c("Insertions/deletions", "Substitutions"))
+      ggplot(data=df, aes(x=offset, y=value, colour=factor(type, levels=c("Before correction", "After correction")))) +
+        geom_line() +
+        facet_grid(. ~ variable) +
+        scale_x_continuous(limits=c(0, read.length)) +
+        scale_y_log10(limits=c(1e-5, 2e-2), breaks=10**(seq(-5, -2, 1))) +
+        xlab("Read offset, bp") +
+        ylab("Error frequency at the offset") +
+        theme(legend.title=element_blank(), legend.position="top",
+              plot.margin = unit(rep(0.2, 4), "lines"))
+    }
+  
+  plot.errorrates("sakai_pgm_400bp", 400)
+  
+#+end_src
+
+#+results:
+[[file:images/error_rate_vs_offset.pdf]]

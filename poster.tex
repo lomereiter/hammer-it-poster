@@ -1,15 +1,87 @@
 \PassOptionsToPackage{dvipsnames,table}{xcolor}
-\documentclass{beamer}
+\documentclass[final]{beamer}
+\mode<presentation> {
+  \usefonttheme[onlymath]{serif}
+}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{tangocolors}
+\setbeamercolor{headline}{fg=tabutter,bg=ta2aluminium}
+\setbeamercolor{separation line}{bg=ta2orange}
+\setbeamercolor{title in headline}{fg=ta3skyblue}
+\setbeamercolor{author in headline}{fg=ta2skyblue}
+\setbeamercolor{institute in headline}{fg=ta2skyblue}
+
+\setbeamercolor{framesubtitle}{fg=ta3orange, bg=ta2gray}
+\setbeamercolor{author in head/foot}{fg=ta2orange, bg=black}
+\setbeamercolor{title in head/foot}{fg=ta2orange, bg=black}
+
+\setbeamercolor*{normal text}{fg=tachameleon, bg=ta3gray}
+\setbeamercolor*{block body}{bg=taaluminium,fg=ta3gray}
+\setbeamercolor*{block title}{fg=taorange,bg=ta2gray}
+\setbeamerfont{block title}{size=\Large,series=\bf}
+\setbeamercolor{upper separation line head}{fg=ta2orange}
+
+\setbeamercolor*{example body}{fg=ta3aluminium,bg=black}
+\setbeamercolor*{example text}{fg=ta3aluminium,bg=black}
+\setbeamercolor*{example title}{bg=taorange,fg=ta2gray}
+
+\setbeamercolor{alerted text}{fg=ta3gray}
+
+\setbeamercolor{structure}{fg=ta3skyblue}
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{block begin}{
+  \vskip.75ex
+  \begin{beamercolorbox}[rounded=true,shadow=true,leftskip=1cm,colsep*=.75ex]{block title}%
+    \usebeamerfont*{block title}\insertblocktitle
+  \end{beamercolorbox}%
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[rounded=true,shadow=true,colsep*=.75ex,sep=.75ex,vmode]{block body}%
+    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+\setbeamertemplate{block end}{
+  \end{beamercolorbox}
+}
+
+\setbeamertemplate{headline}{  
+  \leavevmode
+
+  \begin{beamercolorbox}[wd=\paperwidth]{headline}
+    \begin{columns}[T]
+      \begin{column}{.1\paperwidth}
+      \end{column}
+      \begin{column}{.8\paperwidth}
+        \vskip4ex
+        \raggedleft
+        \usebeamercolor{title in headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
+        \usebeamercolor{author in headline}{\color{fg}\Large{\insertauthor}\\[1ex]}
+        \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}     
+      \end{column}
+      \begin{column}{.1\paperwidth}
+      \end{column}
+    \end{columns}
+  \end{beamercolorbox}
+
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
+    \rule{0pt}{2pt}
+  \end{beamercolorbox}
+}
+
+\setbeamertemplate{footline}[page number]{}
+
 \usepackage[utf8x]{inputenc}
 \usepackage[english]{babel}
-\usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{graphicx}
-\usetheme{Warsaw}
+
 \usepackage[orientation=portrait,size=a0,scale=1.0]{beamerposter}
 \usepackage{algpseudocode}
 
 \setbeamertemplate{caption}[numbered]
+\setbeamertemplate{footline}{}
  
 \newcommand{\columncaption}[1]{
 \begin{center}
@@ -18,20 +90,19 @@
 }
 
 \author{Anton Korobeynikov, Artem Tarasov}
-\title{HammerIT: homopolymer-space Hamming clustering for IonTorrent read
-error correction}
+\title{HammerIT: homopolymer-space Hamming clustering for IonTorrent read error correction}
+\institute{St. Petersburg State University, Russia}
 
+\setlength{\TPHorizModule}{\paperwidth}
+\setlength{\TPVertModule}{\paperheight}
 \begin{document}
 \begin{frame}
-
-\begin{block}{}
-
-  \begin{columns}[t]
-    \begin{column}{0.32\textwidth}
-      \columncaption{Introduction}
-    \end{column}
-    \begin{column}{0.32\textwidth}
-      \columncaption{IonTorrent error profile}
+  \begin{textblock}{0.385}(0.01, 0.05)
+    \begin{block}{Introduction}
+      FIXME: a few words about Ion Torrent sequencing technology
+      \vspace{16em}
+    \end{block}
+    \begin{block}{IonTorrent error profile}
       Corrected flow signal intensities are available in BAM files
       produced by versions of Ion Torrent Suite prior to 3.4. Called
       homopolymer length is obtained as corrected flow signal
@@ -49,31 +120,32 @@ error correction}
 
       \begin{figure}[h!]
         \caption{Flow signal intensities at insertion sites}
-        \includegraphics[height=10em, width=\textwidth]{images/overcalls}
+        \includegraphics[width=\textwidth]{images/overcalls}
       \end{figure}
 
       \begin{figure}[h!]
         \caption{Flow signal intensities at deletion sites}
-        \includegraphics[height=10em, width=\textwidth]{images/undercalls}
+        \includegraphics[width=\textwidth]{images/undercalls}
       \end{figure}
 
       More detailed analysis of errors in IonTorrent data can be found
       in the article
       ``Shining a Light on Dark Sequencing: Characterising Errors in
       Ion Torrent PGM Data'' \emph{(PLoS~Comput~Biol~9(4))}
-    \end{column}
-    \begin{column}{0.32\textwidth}
-      \columncaption{Methods}
-    \end{column}
-  \end{columns}
-\end{block}
+      
+    \end{block}
+    
+    \begin{block}{Approach}
+      FIXME: brief description
+      \vspace{16em}
+    \end{block}
+  \end{textblock}
+  
 
-\begin{block}{}
-  \begin{columns}[t]
-    \begin{column}{0.47\textwidth}
-      \columncaption{Mapping results}
+  \begin{textblock}{0.585}(0.405, 0.05)
+    \begin{block}{Results}
 
-      We evaluated Hammer-IT on 6 publicly available datasets,
+      We evaluated HammerIT on 6 publicly available datasets,
       using the same pipeline as the authors of the recently published
       article ``Updating benchtop sequencing performance comparison''
       \emph{(Nature~Biotechnology,~v.~31,~no.~4)}.
@@ -89,96 +161,94 @@ error correction}
       output. Relative change in read coverage after
       correction stayed within 0.4\% in all cases.
 
-      \begin{figure}
+      \begin{figure}[h]
         \caption{Error rates before and after correction}
         \includegraphics[width=\textwidth]{images/error_rate}
       \end{figure}
-    \end{column}
-    \begin{column}{0.47\textwidth}
-      \columncaption{K-mer counts}
-    \end{column}
-  \end{columns}
 
-\end{block}
+      \begin{figure}[h]
+        \caption{Error reduction by read position for Sakai 400bp reads}
+        \includegraphics[width=0.5\textwidth]{images/error_rate_vs_offset}
+      \end{figure}
+    \end{block}
+  \end{textblock}
 
-\begin{block}{}
-  \begin{columns}[t]
+  \begin{textblock}{0.32}(0.013, 0.7)
+    \begin{block}{Distance calculation}
+      \vspace{37.8em}
+    \end{block}
+  \end{textblock}
 
-    \begin{column}{0.32\textwidth}  
-      \columncaption{Distance calculation}
-    \end{column}
+  \begin{textblock}{0.205}(0.345, 0.7)
+    \begin{block}{K-mer clustering}
+      FIXME: here goes description of clustering algorithm, maybe
+      also a plot showing cluster size distribution.
+    \end{block}
+  \end{textblock}
 
-    \begin{column}{0.32\textwidth}
-      \columncaption{K-mer clustering}
-      \begin{columns}[t]
-        \begin{column}{0.70\textwidth}
-          *FIXME* here goes description of clustering algorithm, maybe
-          also a plot showing cluster size distribution.
-        \end{column}
-        \begin{column}{0.30\textwidth}
-          \begin{table}[h!]
-            \scalebox{0.52}{
-              \begin{tabular}{|l|r|r|}
-                \textbf{16-mer} & \textbf{n} & \textbf{qual.} \\ \hline 
-                GTGTACATGTCGATGC & \cellcolor{green!100!red!20!white} 113 & \cellcolor{green!100!red!20!white} 1.00 \\
-                GTGTACATGTCGATGT & \cellcolor{green!20!red!20!white} 23 & \cellcolor{green!90!red!20!white} 0.90 \\
-                GTGTACATGCGATGCT & \cellcolor{green!6!red!20!white} 7 & \cellcolor{green!80!red!20!white} 0.80 \\
-                GTGTACATGTCGTGCT & \cellcolor{green!5!red!20!white} 6 & \cellcolor{green!33!red!20!white} 0.33 \\
-                GTGTACATGTCATGCT & \cellcolor{green!5!red!20!white} 6 & \cellcolor{green!31!red!20!white} 0.31 \\
-                CTTGTACATGTCGATGC & \cellcolor{green!5!red!20!white} 6 & \cellcolor{green!26!red!20!white} 0.26 \\
-                GTGTACATGTCTGCTC & \cellcolor{green!4!red!20!white} 4 & \cellcolor{green!28!red!20!white} 0.28 \\
-                GTGTACATGTCGATTGC & \cellcolor{green!4!red!20!white} 4 & \cellcolor{green!12!red!20!white} 0.12 \\
-                GTGTACATGTGGATGCT & \cellcolor{green!4!red!20!white} 4 & \cellcolor{green!9!red!20!white} 0.09 \\
-                GTGTACATGTCCGATGC & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!41!red!20!white} 0.41 \\
-                GTGTACATGTCGAGCT & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!14!red!20!white} 0.14 \\
-                GTGTACATGTCGAATGC & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!12!red!20!white} 0.12 \\
-                GTGTACATGTCGTGTC & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!10!red!20!white} 0.10 \\
-                GTGTACATGCGATGCA & \cellcolor{green!2!red!20!white} 2 & \cellcolor{green!28!red!20!white} 0.28 \\
-                GAGTACACTGTCGCTG & \cellcolor{green!2!red!20!white} 2 & \cellcolor{green!4!red!20!white} 0.04 \\
-                GTGTACATGTCGATGA & \cellcolor{green!2!red!20!white} 2 & \cellcolor{green!3!red!20!white} 0.03 \\
-                GTGTATACATGTCGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!37!red!20!white} 0.37 \\
-                GTGTACATGCGATGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!32!red!20!white} 0.32 \\
-                GTGTACACTGTCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!25!red!20!white} 0.25 \\
-                GTGTACACTGTCCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!13!red!20!white} 0.13 \\
-                GTGTACATGTCAATGTC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!10!red!20!white} 0.10 \\
-                GTGTACATGTCATGCCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!9!red!20!white} 0.09 \\
-                CAGTACACTGTCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
-                GTGTACATGCGATGCCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
-                GTGTACATGTCGAGCCG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
-                GTGTACATGTCGAGGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
-                GAGTACACACCACTCTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!6!red!20!white} 0.06 \\
-                GTGTACATGTCATGCGG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!5!red!20!white} 0.05 \\
-                GTGTACATGTCGTGCA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!4!red!20!white} 0.04 \\
-                GTGTACATGTCGGATGC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!4!red!20!white} 0.04 \\
-                GTGTACATGCGCTGTC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!4!red!20!white} 0.04 \\
-                GTGTACATGTCGGATGCC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
-                GTGTACATGTCATGTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
-                CAGTACACTGTAGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
-                GTGTACAATGTCGTGCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
-                ATGTACGCTGTCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
-                GAGTATACATGTCGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
-                GTGTACATGTCTGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
-                GTGTACATGTCGAATGT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
-                GTTGTTACATGTCGATGC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
-                GTGTATACATGTCATG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-                CAGTACACTGTCGCTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-                GTGTACATGTCGACTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-                GTGTACATGTCGATTCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-                GTGTACATGTCGAGTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-                GTGTTACATGTCGATGC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-                ATGTACGCTGTAGCTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-                ATGTACGCTGTAGCTGG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-                GTGTTACATGTGGATGCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-                GTGTACATGTCGACAGG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!0!red!20!white} 0.00 \\
-                \hline\end{tabular}
-              }
-          \end{table}
-        \end{column}
-      \end{columns}
-    \end{column}
-
-    \begin{column}{0.32\textwidth}
-      \columncaption{Error correction}
+  \begin{textblock}{0.096}(0.560, 0.7)
+    \begin{block}{Typical cluster}
+      \begin{table}[h!]
+        \scalebox{0.539}{
+          \begin{tabular}{|l|r|r|}
+            \textbf{16-mer} & \textbf{n} & \textbf{qual.} \\ \hline 
+            GTGTACATGTCGATGC & \cellcolor{green!100!red!20!white} 113 & \cellcolor{green!100!red!20!white} 1.00 \\
+            GTGTACATGTCGATGT & \cellcolor{green!20!red!20!white} 23 & \cellcolor{green!90!red!20!white} 0.90 \\
+            GTGTACATGCGATGCT & \cellcolor{green!6!red!20!white} 7 & \cellcolor{green!80!red!20!white} 0.80 \\
+            GTGTACATGTCGTGCT & \cellcolor{green!5!red!20!white} 6 & \cellcolor{green!33!red!20!white} 0.33 \\
+            GTGTACATGTCATGCT & \cellcolor{green!5!red!20!white} 6 & \cellcolor{green!31!red!20!white} 0.31 \\
+            CTTGTACATGTCGATGC & \cellcolor{green!5!red!20!white} 6 & \cellcolor{green!26!red!20!white} 0.26 \\
+            GTGTACATGTCTGCTC & \cellcolor{green!4!red!20!white} 4 & \cellcolor{green!28!red!20!white} 0.28 \\
+            GTGTACATGTCGATTGC & \cellcolor{green!4!red!20!white} 4 & \cellcolor{green!12!red!20!white} 0.12 \\
+            GTGTACATGTGGATGCT & \cellcolor{green!4!red!20!white} 4 & \cellcolor{green!9!red!20!white} 0.09 \\
+            GTGTACATGTCCGATGC & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!41!red!20!white} 0.41 \\
+            GTGTACATGTCGAGCT & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!14!red!20!white} 0.14 \\
+            GTGTACATGTCGAATGC & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!12!red!20!white} 0.12 \\
+            GTGTACATGTCGTGTC & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!10!red!20!white} 0.10 \\
+            GTGTACATGCGATGCA & \cellcolor{green!2!red!20!white} 2 & \cellcolor{green!28!red!20!white} 0.28 \\
+            GAGTACACTGTCGCTG & \cellcolor{green!2!red!20!white} 2 & \cellcolor{green!4!red!20!white} 0.04 \\
+            GTGTACATGTCGATGA & \cellcolor{green!2!red!20!white} 2 & \cellcolor{green!3!red!20!white} 0.03 \\
+            GTGTATACATGTCGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!37!red!20!white} 0.37 \\
+            GTGTACATGCGATGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!32!red!20!white} 0.32 \\
+            GTGTACACTGTCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!25!red!20!white} 0.25 \\
+            GTGTACACTGTCCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!13!red!20!white} 0.13 \\
+            GTGTACATGTCAATGTC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!10!red!20!white} 0.10 \\
+            GTGTACATGTCATGCCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!9!red!20!white} 0.09 \\
+            CAGTACACTGTCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
+            GTGTACATGCGATGCCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
+            GTGTACATGTCGAGCCG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
+            GTGTACATGTCGAGGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
+            GAGTACACACCACTCTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!6!red!20!white} 0.06 \\
+            GTGTACATGTCATGCGG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!5!red!20!white} 0.05 \\
+            GTGTACATGTCGTGCA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!4!red!20!white} 0.04 \\
+            GTGTACATGTCGGATGC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!4!red!20!white} 0.04 \\
+            GTGTACATGCGCTGTC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!4!red!20!white} 0.04 \\
+            GTGTACATGTCGGATGCC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
+            GTGTACATGTCATGTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
+            CAGTACACTGTAGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
+            GTGTACAATGTCGTGCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
+            ATGTACGCTGTCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
+            GAGTATACATGTCGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
+            GTGTACATGTCTGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
+            GTGTACATGTCGAATGT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
+            GTTGTTACATGTCGATGC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
+            GTGTATACATGTCATG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+            CAGTACACTGTCGCTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+            GTGTACATGTCGACTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+            GTGTACATGTCGATTCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+            GTGTACATGTCGAGTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+            GTGTTACATGTCGATGC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+            ATGTACGCTGTAGCTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+            ATGTACGCTGTAGCTGG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+            GTGTTACATGTGGATGCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
+            GTGTACATGTCGACAGG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!0!red!20!white} 0.00 \\
+            \hline\end{tabular}
+        }
+      \end{table}
+    \end{block}
+  \end{textblock}
+  \begin{textblock}{0.32}(0.666, 0.7)
+    \begin{block}{Error correction algorithm}
 
       \begin{algorithmic}
         \For{\textbf{each} \textit{read}}
@@ -211,9 +281,8 @@ error correction}
            \State append read homopolymer runs after the last aligned run.
         \EndFor
       \end{algorithmic}
-    \end{column}
-  \end{columns}
-\end{block}
+  \end{block}
+\end{textblock}
 
 \end{frame}
 \end{document}

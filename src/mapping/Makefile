@@ -9,3 +9,6 @@ read_bam: read_bam.d
 
 count_mean_coverage: count_mean_coverage.d
 	rdmd --build-only -IBioD -O -release -inline count_mean_coverage.d
+
+error_rate: error_rate.d
+	rdmd --build-only -IBioD -O -release -inline error_rate.d

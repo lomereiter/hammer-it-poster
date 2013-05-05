@@ -112,17 +112,14 @@ cat ${execDir}/indel_summary_table.R | ${Rcmd} --args ${aliTABUni}
 if [ $? -ne 0 ]; then exit $err ; fi
 echo -e "   done.\n"
 
-##### calculate the alignment accuracy
-#outACCUni=${outpath}/${prefixUni}.acc
-#echo -e "[4]Creating alignemnt based per read accuracy ${outACCUni} \n"
-#echo -e "   ${execDir}/calculate_accuracy.py ${mapOutUni}.sorted.bam ${ref} > ${outACCUni}\n"  
-#${execDir}/calculate_accuracy.py ${mapOutUni}.sorted.bam ${ref} > ${outACCUni}  
-#if [ $? -ne 0 ]; then exit $err ; fi
-#echo -e "   done.\n"
-
 ##### calculate mean coverage
 echo -e "[4]Calculating mean coverage  ${mapOutUni}.sorted.bam \n"
 ${execDir}/count_mean_coverage ${mapOutUni}.sorted.bam > ${outpath}/${prefixUni}.meanCovs
+if [ $? -ne 0 ]; then exit $err ; fi
+echo -e "   done.\n"
+
+echo -e "[5]Calculating error rate  ${mapOutUni}.sorted.bam \n"
+${execDir}/error_rate ${mapOutUni}.sorted.bam > ${outpath}/${prefixUni}.errorRate
 if [ $? -ne 0 ]; then exit $err ; fi
 echo -e "   done.\n"
 

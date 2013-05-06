@@ -163,19 +163,62 @@
 
       \begin{figure}[h]
         \caption{Error rates before and after correction}
-        \includegraphics[width=\textwidth]{images/error_rate}
+        \includegraphics[width=0.95\textwidth]{images/error_rate}
       \end{figure}
 
       \begin{figure}[h]
         \caption{Error reduction by read position for Sakai 400bp reads}
-        \includegraphics[width=0.5\textwidth]{images/error_rate_vs_offset}
+        \includegraphics[width=0.65\textwidth]{images/error_rate_vs_offset}
       \end{figure}
     \end{block}
   \end{textblock}
 
   \begin{textblock}{0.32}(0.013, 0.7)
-    \begin{block}{Distance calculation}
-      \vspace{37.8em}
+    \begin{block}{Pairwise distance calculation}
+      We use 5-base lookahead to compute distance between homopolymer-space $k$-mers. Helper
+      table stores precomputed values for the functions
+      \begin{eqnarray*}
+        H_k: \left\{\mathrm{A, C, G, T}\right\}^{k} \times \left\{\mathrm{A, C, G,
+          T}\right\}^{k} \to \left\{\mathrm{Insertion, Deletion,
+          Mismatch}\right\}, \\
+        k=1,2,3,4,5\,\mathrm{.}
+      \end{eqnarray*}
+      The chosen value of 5 is~a~trade-off between accuracy and speed.
+      
+      Mapped reads from B7-295.bam dataset were used for training.
+
+      \begin{center}
+        \begin{table}[h!]
+          \begin{tabular}{llllllllllllllll}
+            G  &  \cellcolor{blue!30}A  &  \cellcolor{blue!30}G  &  \cellcolor{blue!30}T  &  \cellcolor{blue!30}A  &  \cellcolor{blue!30}C  &  A  &  \cellcolor{green!30}C  &  \cellcolor{green!30}T  &  \cellcolor{green!30}G  &  \cellcolor{green!30}T  &  \cellcolor{green!30}C  &  G  &  \cellcolor{red!30}T  &  \cellcolor{red!20!orange!30}C  &  \cellcolor{red!20!orange!30}G  \\
+            G  &  \cellcolor{blue!30}T  &  \cellcolor{blue!30}G  &  \cellcolor{blue!30}T  &  \cellcolor{blue!30}A  &  \cellcolor{blue!30}C  &  A  &  \cellcolor{green!30}T  &  \cellcolor{green!30}G  &  \cellcolor{green!30}T  &  \cellcolor{green!30}C  &  \cellcolor{green!30}G  &  \cellcolor{red!30}A  &  \cellcolor{red!20!orange!30}T  &  \cellcolor{red!20!orange!30}G  &  C  \\
+          \end{tabular}
+        \end{table}
+        \begin{eqnarray*}
+          H_5(\mathrm{AGTAC}, \mathrm{TGTAC}) &=& \mathrm{Mismatch} \\
+          H_5(\mathrm{CTGTC}, \mathrm{TGTCG}) &=& \mathrm{Deletion} \\
+          H_3(\mathrm{TCG}, \mathrm{ATG}) &=& \mathrm{Mismatch} \\
+          H_2(\mathrm{CG}, \mathrm{TG}) &=& \mathrm{Mismatch}
+        \end{eqnarray*}
+      \end{center}
+
+    {\large Algorithm}
+    \begin{algorithmic}
+      \State \textbf{Input:} $x, y$ --- nucleotide sequences
+      \State \textbf{Output:} $dist$ --- approximate Levenshtein distance between $x$ and $y$
+      \vspace{0.3cm}
+      \State $pos.x \gets 0$; $pos.y \gets 0$; $dist \gets 0$;
+      \While{$pos.x < \mathrm{length}(x)\textrm{ and }pos.y < \mathrm{length}(y)$}
+      \If{$x[pos.x] = y[pos.y]$}
+      \State $pos.x \gets pos.x + 1$; $pos.y \gets pos.y + 1$;
+      \Else
+      \State $k \gets \mathrm{min}(5, \mathrm{length}(x) - pos.x, \mathrm{length}(y) - pos.y)$;
+      \State adjust $pos.x$ and $pos.y$ according to
+      \State \hspace{1cm} $H_k(x[pos.x\textrm{ .. }pos.x + k - 1], y[pos.y\textrm{ .. }pos.y + k - 1])$;
+      \State $dist \gets dist + 1$;
+      \EndIf
+      \EndWhile
+    \end{algorithmic}
     \end{block}
   \end{textblock}
 

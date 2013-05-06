@@ -1,4 +1,4 @@
-#+begin_src R :results graphics :session :file images/error_rate_vs_offset.pdf :width 5 :height 4
+#+begin_src R :results graphics :session :file images/error_rate_vs_offset.pdf :width 7 :height 4
     freqs <- function(df) {
       df$subst.freq <- df$subst/df$total
       df$ins.freq <- df$ins/df$total
@@ -10,13 +10,21 @@
     library(reshape2)
     read.errorrates <- function(dataset.name) {
       df.before <- read.table(paste("results/", dataset.name, "/raw/errorrate.dat", sep=""), header=T)
-      df.after <- read.table(paste("results/", dataset.name, "/corrected_untrimmed/errorrate.dat", sep=""), header=T)
+      df.after.u <- read.table(paste("results/", dataset.name, "/corrected_untrimmed/errorrate.dat", sep=""), header=T)
+      df.after.t <- read.table(paste("results/", dataset.name, "/corrected_trimmed/errorrate.dat", sep=""), header=T)
       df.f.before <- freqs(df.before)
-      df.f.after <- freqs(df.after)
-      df.f.before$type <- "Before correction"
-      df.f.after$type <- "After correction"
-      df.f <- rbind(df.f.before, df.f.after)
-      melt(df.f, c("offset", "type"), c("indel.freq", "subst.freq"))
+      df.f.after.u <- freqs(df.after.u)
+      df.f.after.t <- freqs(df.after.t)
+      before.descr <- "before correction"
+      after.t.descr <- "after correction\n(trimming uncorrected ends)"
+      after.u.descr <- "after correction\n(preserving uncorrected ends)"
+      df.f.before$type <- before.descr
+      df.f.after.t$type <- after.t.descr
+      df.f.after.u$type <- after.u.descr
+      df.f <- rbind(df.f.before, df.f.after.t, df.f.after.u)
+      df <- melt(df.f, c("offset", "type"), c("indel.freq", "subst.freq"))
+      df$type <- factor(df$type, levels=c(before.descr, after.t.descr, after.u.descr))
+      df
     }
   
     library(ggplot2)
@@ -25,7 +33,7 @@
       df <- read.errorrates(dataset.name)
       df <- df[df$value > 0, ]
       df$variable <- factor(df$variable, levels=c("indel.freq", "subst.freq"), labels=c("Insertions/deletions", "Substitutions"))
-      ggplot(data=df, aes(x=offset, y=value, colour=factor(type, levels=c("Before correction", "After correction")))) +
+      ggplot(data=df, aes(x=offset, y=value, colour=type)) +
         geom_line() +
         facet_grid(. ~ variable) +
         scale_x_continuous(limits=c(0, read.length)) +

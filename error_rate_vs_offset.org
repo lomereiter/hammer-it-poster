@@ -1,4 +1,4 @@
-#+begin_src R :results graphics :session :file images/error_rate_vs_offset.pdf :width 7 :height 4
+#+begin_src R :results output graphics :file images/error_rate_vs_offset.pdf :width 7 :height 3.5
     freqs <- function(df) {
       df$subst.freq <- df$subst/df$total
       df$ins.freq <- df$ins/df$total
@@ -45,8 +45,4 @@
     }
   
   plot.errorrates("sakai_pgm_400bp", 400)
-  
 #+end_src
-
-#+results:
-[[file:images/error_rate_vs_offset.pdf]]

@@ -4,6 +4,10 @@
   \usefonttheme[onlymath]{serif}
 }
 \usepackage[absolute,overlay]{textpos}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage[mathscr]{euscript}
+\usepackage{amssymb}
 \usepackage{tangocolors}
 \setbeamercolor{headline}{fg=tabutter,bg=ta2aluminium}
 \setbeamercolor{separation line}{bg=ta2orange}
@@ -16,7 +20,7 @@
 \setbeamercolor{title in head/foot}{fg=ta2orange, bg=black}
 
 \setbeamercolor*{normal text}{fg=tachameleon, bg=ta3gray}
-\setbeamercolor*{block body}{bg=taaluminium,fg=ta3gray}
+\setbeamercolor*{block body}{bg=white,fg=ta3gray}
 \setbeamercolor*{block title}{fg=taorange,bg=ta2gray}
 \setbeamerfont{block title}{size=\Large,series=\bf}
 \setbeamercolor{upper separation line head}{fg=ta2orange}
@@ -80,11 +84,12 @@
 \usepackage[scale=1.0]{beamerposter}
 \setlength{\paperwidth}{48in}
 \setlength{\paperheight}{36in}
-\usepackage{algpseudocode}
+\usepackage[noend]{algpseudocode}
+\usepackage{parskip}
 
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{footline}{}
- 
+
 \newcommand{\columncaption}[1]{
 \begin{center}
   {\huge #1}
@@ -99,11 +104,60 @@
 \setlength{\TPVertModule}{\paperheight}
 \begin{document}
 \begin{frame}
-  \begin{textblock}{0.245}(0.01, 0.05)
+
+  \begin{textblock}{0.450}(0.01, 0.06)
     \begin{block}{Introduction}
-      FIXME: a few words about Ion Torrent sequencing technology
-      \vspace{16em}
+      FILLME
+      \vspace{11em}
     \end{block}
+  \end{textblock}
+  \begin{textblock}{0.215}(0.01, 0.21)
+
+    \begin{block}{Notation}
+      {\large
+      Let $\mathscr{N}$ denote the nucleotide alphabet $\left\{\textrm{A, C, G, T}\right\}$.
+      By~definition, put $\mathscr{H} = \mathscr{N} \times \mathbb{N}^+$.
+
+      We call an~element of~the~alphabet~$\mathscr{H}$~a~\emph{homopolymer run},
+      and~an~element of~$\mathscr{H}^k$~a~\emph{homopolymer-space $k$-mer}.
+
+      We use $x[k]$ to denote $k$-th element of
+      a sequence, using zero-based indexing; $x[k\textrm{ .. }l]$
+      to denote a subsequence $x[k]x[k+1]\dots x[l]$; finally, length of $x$ is denoted by $|x|$.
+      
+      Distance between $i,\;j \in \mathscr{H}^k$  is defined as the
+      minimum number of $1$-base insertions/deletions/mismatches needed to align common part of $i$ and $j$.
+      It is denoted by $\mathrm{dist}(i, j)$.
+      }
+    \end{block}
+
+    \begin{block}{HammerIT workflow}
+      \begin{figure}
+        \centering
+        \tikzstyle{state} = [draw, ellipse, fill=green!20, text centered, minimum width=16em]
+        \tikzstyle{block} = [draw, rectangle, rounded corners, fill=blue!10, text centered, minimum width=24em]
+        \tikzstyle{line} = [draw, -triangle 45]
+        \resizebox{\columnwidth}{!}{
+        \begin{tikzpicture}[node distance = 2.5cm]
+          \node[state] (raw) {Set of reads};
+          \node[block, below of=raw] (count) {Count homopolymer-space $k$-mer statistics};
+          \node[block, below of=count] (cluster) {Single-linkage clustering of homopolymer-space $k$-mers};
+          \node[block, below of=cluster] (subcluster) {Subclustering with $k$-means};
+          \node[block, below of=subcluster, text width=18em] (correction) {Correcting reads};
+          \node[state, below of=correction] (corrected) {Set of corrected reads};
+          \path[line] (raw) -- (count);
+          \path[line] (count) -- (cluster);
+          \path[line] (cluster) -- (subcluster);
+          \path[line] (subcluster) -- (correction);
+          \path[line] (correction) -- (corrected);
+        \end{tikzpicture}
+        }
+      \end{figure}
+    \end{block}
+    
+  \end{textblock}
+
+  \begin{textblock}{0.23}(0.230, 0.21)
     \begin{block}{IonTorrent error profile}
       Corrected flow signal intensities are available in BAM files
       produced by versions of Ion Torrent Suite prior to 3.4. Called
@@ -136,27 +190,10 @@
       Ion Torrent PGM Data'' \emph{(PLoS~Comput~Biol~9(4))}
       
     \end{block}
-    
-    \begin{block}{General approach}
-      The core idea is the same as in Hammer (\emph{Bioinformatics}~(2011),~27~(13);~i137-i141)
-      \begin{enumerate}
-      \item Count and cluster homopolymer-space $k$-mers (we used $k = 16$)
-      \item Fill consensus array for each read, using centers of clusters containing $k$-mers from the read
-      \item Compute consensus for each homopolymer run in the read
-      \end{enumerate}
-
-      There are several substantial differences, however. Firstly, the basic unit of operation is homopolymer run, i.e.
-      a pair $(\textrm{nucleotide,~length})$. Second, using Hamming distance in clustering is out of question due to
-      abundance of indels in Ion Torrent data. Therefore, those tricks for fast clustering, that are based on Hamming
-      distance properties, are, in the best case, only partially applicable for homopolymer-space $k$-mers.
-
-      \vspace{3cm}
-    \end{block}
   \end{textblock}
-  
 
-  \begin{textblock}{0.35}(0.260, 0.05)
-    \begin{block}{Results}
+  \begin{textblock}{0.310}(0.465, 0.06)
+    \begin{block}{Error reduction results}
 
       We evaluated HammerIT on 6 publicly available datasets,
       using the same pipeline as the authors of the recently published
@@ -165,7 +202,7 @@
       In that article, error rate in four Ion~Torrent datasets has
       been assessed. We used the same data plus two extra datasets from
       314v2~chip, which recently became available on Ion~Community~Portal.
-      
+     
       Indel/mismatch error rates were calculated for uniquely mapped
       reads before and after correction. For each dataset, correction
       was done in two ways. In the first setup, trimming was done for 
@@ -174,6 +211,8 @@
       output. Relative change in read coverage after
       correction stayed within 0.4\% in all cases.
 
+      \vspace{0.64em}
+
       \begin{figure}[h]
         \caption{Error rates before and after correction}
         \includegraphics[width=0.95\textwidth]{images/error_rate}
@@ -181,24 +220,22 @@
 
       \begin{figure}[h]
         \caption{Error reduction by read position for Sakai 400bp reads}
-        \includegraphics[width=0.65\textwidth]{images/error_rate_vs_offset}
+        \includegraphics[width=0.95\textwidth]{images/error_rate_vs_offset}
       \end{figure}
     \end{block}
   \end{textblock}
 
-  \begin{textblock}{0.23}(0.260, 0.62)
+  \begin{textblock}{0.215}(0.01, 0.65)
     \begin{block}{Pairwise distance calculation}
-      We use 5-base lookahead to compute distance between homopolymer-space $k$-mers. Helper
-      table stores precomputed values for the functions
+      We use 5-base lookahead to compute distance between $k$-mers in homopolymer-space. Helper
+      table stores precomputed values of
       \begin{eqnarray*}
-        H_k: \left\{\mathrm{A, C, G, T}\right\}^{k} \times \left\{\mathrm{A, C, G,
-          T}\right\}^{k} \to \left\{\mathrm{Insertion, Deletion,
-          Mismatch}\right\}, \\
-        k=1,2,3,4,5\,\mathrm{.}
+        H_k: \mathscr{N}^{k} \times \mathscr{N}^{k} \to \left\{\mathrm{Insertion, Deletion,
+          Mismatch}\right\}, \ k=1,2,3,4,5\,\mathrm{.}
       \end{eqnarray*}
       The chosen value of 5 is~a~trade-off between accuracy and speed.
       
-      Mapped reads from B7-295.bam dataset were used for training.
+      (Mapped reads from B7-295.bam dataset were used for training.)
 
       \begin{center}
         \begin{table}[h!]
@@ -207,25 +244,25 @@
             G  &  \cellcolor{blue!30}T  &  \cellcolor{blue!30}G  &  \cellcolor{blue!30}T  &  \cellcolor{blue!30}A  &  \cellcolor{blue!30}C  &  A  &  \cellcolor{green!30}T  &  \cellcolor{green!30}G  &  \cellcolor{green!30}T  &  \cellcolor{green!30}C  &  \cellcolor{green!30}G  &  \cellcolor{red!30}A  &  \cellcolor{red!20!orange!30}T  &  \cellcolor{red!20!orange!30}G  &  C  \\
           \end{tabular}
         \end{table}
-        \begin{eqnarray*}
-          H_5(\mathrm{AGTAC}, \mathrm{TGTAC}) &=& \mathrm{Mismatch} \\
-          H_5(\mathrm{CTGTC}, \mathrm{TGTCG}) &=& \mathrm{Deletion} \\
-          H_3(\mathrm{TCG}, \mathrm{ATG}) &=& \mathrm{Mismatch} \\
-          H_2(\mathrm{CG}, \mathrm{TG}) &=& \mathrm{Mismatch}
-        \end{eqnarray*}
+        \begin{align*}
+          H_5(\mathrm{AGTAC}, \mathrm{TGTAC}) &= \mathrm{Mismatch} \\
+          H_5(\mathrm{CTGTC}, \mathrm{TGTCG}) &= \mathrm{Deletion} \\
+          H_3(\mathrm{TCG}, \mathrm{ATG}) &= \mathrm{Mismatch} \\
+          H_2(\mathrm{CG}, \mathrm{TG}) &= \mathrm{Mismatch}
+        \end{align*}
       \end{center}
 
     {\large Algorithm}
     \begin{algorithmic}
-      \State \textbf{Input:} $x, y$ --- nucleotide sequences
-      \State \textbf{Output:} $dist$ --- approximate Levenshtein distance between $x$ and $y$
+      \State \textbf{Input:} $x, y \in \mathscr{N}^+$ --- homopolymer-space $k$-mers in nucleotide alphabet
+      \State \textbf{Output:} $dist$ --- approximate distance between $x$ and $y$
       \vspace{0.3cm}
       \State $pos.x \gets 0$; $pos.y \gets 0$; $dist \gets 0$;
-      \While{$pos.x < \mathrm{length}(x)\textrm{ and }pos.y < \mathrm{length}(y)$}
+      \While{$pos.x < |x|\textrm{ and }pos.y < |y|$}
       \If{$x[pos.x] = y[pos.y]$}
       \State $pos.x \gets pos.x + 1$; $pos.y \gets pos.y + 1$;
       \Else
-      \State $k \gets \mathrm{min}(5, \mathrm{length}(x) - pos.x, \mathrm{length}(y) - pos.y)$;
+      \State $k \gets \mathrm{min}(5, |x| - pos.x, |y| - pos.y)$;
       \State adjust $pos.x$ and $pos.y$ according to
       \State \hspace{1cm} $H_k(x[pos.x\textrm{ .. }pos.x + k - 1], y[pos.y\textrm{ .. }pos.y + k - 1])$;
       \State $dist \gets dist + 1$;
@@ -235,17 +272,67 @@
     \end{block}
   \end{textblock}
 
-  \begin{textblock}{0.16}(0.495, 0.62)
-    \begin{block}{K-mer clustering}
-      FIXME: here goes description of clustering algorithm, maybe
-      also a plot showing cluster size distribution.
+  \begin{textblock}{0.23}(0.230, 0.65)
+    \begin{block}{Homopolymer-space $k$-mer clustering}
+      The starting point is single-linkage clustering of homopolymer-space $k$-mers. Two homopolymer-space
+      $k$-mers belong to the same cluster if~the~distance between their nucleotide representations does not exceed one.
+
+      We reduce quadratic time requirements of the naive algorithm by noticing that if distance between two $k$-mers is less or
+      equal to one, they share a common substring of length at least $\lfloor k/2 \rfloor$. This allows us to group
+      $k$-mers into smaller blocks sharing a substring, and then use the quadratic algorithm for each block.
+      
+      In order to detect all pairs of connected $k$-mers with such grouping, ranges $(0\textrm{ .. }\lfloor k/2 \rfloor
+      - 1)$, $(1\textrm{ .. }\lfloor k/2 \rfloor)$, $\dots$, $(\lfloor (k + 1)/2 \rfloor\textrm{ .. }k - 1)$ are to be examined.
+      Despite of this, we use only the first and the last of the ranges, to speed up the clustering step. 
+      This increases the number of \emph{singletons} --- clusters consisting of only one $k$-mer, usually erroneous ---
+      but has little impact on correction performance because of adjacent read $k$-mers making much larger contribution
+      into the consensus scores (the number of singleton occurrences is usually low).
+     
+      \vspace{0.3em} 
+      \emph{partition}($\mathscr{K}$, $i$, $j$) $=$
+      $\left\{B_s : \bigcup_{s\in \mathscr{H}^{j - i + 1}}B_s = \mathscr{K},\;\forall x\in B_s\ x[i\textrm{ .. }j] =
+        s\right\}$
+
+      {\large Algorithm}
+
+      \begin{algorithmic}
+        \State \emph{kmers} $\gets$ homopolymer-space $k$-mers seen in the data
+        \State \emph{components} $\gets$ $\{\{k\} : k \in \textrm{\emph{kmers}}\}$
+        \State \emph{blocksL} $\gets$ \emph{partition}(\emph{kmers}, $0$, $\lfloor k/2 \rfloor - 1$)
+        \State \emph{blocksR} $\gets$ \emph{partition}(\emph{kmers}, $\lfloor (k+1)/2 \rfloor$, $k - 1$)
+        \For{\textbf{each} \emph{block} \textbf{in} \emph{blocksL}, \emph{blocksR}}
+          \For{\textbf{each} $i \in \textrm{\emph{block}}$}
+            \For{\textbf{each} $j \in \textrm{\emph{block}}$}
+              \If{$\mathrm{dist}(i, j) \leq 1$}
+                 \State join the components to which $i$ and $j$ belong
+              \EndIf
+             \EndFor
+           \EndFor
+         \EndFor
+      \end{algorithmic}
     \end{block}
   \end{textblock}
 
-  \begin{textblock}{0.08}(0.660, 0.62)
+  \begin{textblock}{0.200}(0.465, 0.65)
+    \begin{block}{Subclustering}
+      A cluster obtained from the initial process may contain $m \geq 2$ homopolymer-space $k$-mers from the genome.
+      In this case, we split the cluster into $m$ subclusters by running $k$-means algorithm on it.
+
+      The subtle question is how to determine $m$. Currently we just set it to be the number of the
+      cluster elements with quality within machine epsilon of $1$, where \emph{quality} of $x \in \mathscr{H}^k$
+      is defined as $\Pr(x\textrm{ is genomic})$.
+      For the set of reads $\mathscr{R} \subset \mathscr{N}^+$ the quality of $x \in \mathscr{H}^k$ is computed as
+      \begin{equation*}
+        \prod_{r \in \mathscr{R}}\prod_{\substack{0 \leq m \leq |r| - |x'|, \\ r[m\textrm{ .. }m + |x'| - 1] = x'}}\prod_{m\leq n < m + |x'|}\Pr(r[n]\textrm{ is correct})\,\mathrm{,}
+      \end{equation*}
+      where $x' \in \mathscr{N}^+$ is the sequence of nucleotides in $x$. 
+    \end{block}
+  \end{textblock}
+
+  \begin{textblock}{0.105}(0.670, 0.65)
     \begin{block}{Typical cluster}
       \begin{table}[h!]
-        \scalebox{0.55}{
+        \scalebox{0.51}{
           \begin{tabular}{|l|r|r|}
             \textbf{16-mer}    & \textbf{n}                             & \textbf{qual.}                          \\ \hline 
             GTGTACATGTCGATGC   & \cellcolor{green!100!red!20!white} 113 & \cellcolor{green!100!red!20!white} 1.00 \\
@@ -303,11 +390,10 @@
       \end{table}
     \end{block}
   \end{textblock}
-  \begin{textblock}{0.245}(0.750, 0.62)
+  \begin{textblock}{0.215}(0.780, 0.65)
     \begin{block}{Error correction algorithm}
-
       \begin{algorithmic}
-        \For{\textbf{each} \textit{read}}
+        \For{\textbf{each} \textit{read} from the dataset}
       \item \hspace{\algorithmicindent}\emph{(Producing contiguous corrected parts of \emph{read})}
           \For{\textbf{each} homopolymer-space \textit{kmer} from the read}
             \State \textit{center} $\gets$ center of the cluster to which \textit{kmer} belongs;
@@ -316,27 +402,30 @@
               \State include \textit{center} into consensus score calculation;
             \Else
               \State yield new corrected part from current consensus;
+              \State trim homopolymer runs with low consensus score from ends;
               \State estimate its position on the read;
-              \State reset consensus table and start new part;
+              \State reset consensus table and start a new part;
             \EndIf
           \EndFor
       \item \hspace{\algorithmicindent}\emph{(Combining corrected parts)}
-          \For{\textbf{each} corrected \textit{part}}
-            \State trim homopolymer runs with low consensus score from both ends;
-            \State align last 8 homopolymer runs against the read sequence;
-            \State align first 8 runs of the next part;
+          \While{there are two or more parts}
+            \State \emph{curr} $\gets$ first part; \emph{next} $\gets$ second part;
+            \State align last 8 homopolymer runs of \emph{curr} against the read;
+            \State align first 8 homopolymer runs of \emph{next} against the read;
             \If{there is a gap on the read between the two parts}
               \State copy read homopolymer runs as is;
             \Else
               \State select homopolymer runs with higher consensus score\\
           \hspace{6.0em}from the intersection of the two parts;
             \EndIf
-          \EndFor
+            \State replace \emph{curr} and \emph{next} with the combined part;
+          \EndWhile
       \item \hspace{\algorithmicindent}\emph{(Optionally, attaching uncorrected end)}
            \State align last 8 runs of the last chunk against the read sequence;
            \State append read homopolymer runs after the last aligned run.
         \EndFor
       \end{algorithmic}
+      \vspace{-0.2em}
   \end{block}
 \end{textblock}
 

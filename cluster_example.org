@@ -52,82 +52,49 @@ kmers_json = <<JSON
 , "GTGTACACTGTCCGCTA": [1, 0.128547]
 }
 JSON
+      
+    require 'json'
+    kmers = JSON.parse(kmers_json).sort_by{|k, v| v.map{|x| -x}}
     
-  require 'json'
-  kmers = JSON.parse(kmers_json).sort_by{|k, v| v.map{|x| -x}}
+    white_pc = 80
   
-  white_pc = 80
+    latex_rows = kmers.map{ |kmer, data|
+      n, prob = data
+      green_pc = ((n.to_f / kmers.first.last.first) * 100).round
+      count_color = "green!#{green_pc}!red!#{100 - white_pc}!white"
+      count_cell = "\\cellcolor{#{count_color}} #{n}"
+      green_pc = (prob * 100).round
+      prob_color = "green!#{green_pc}!red!#{100 - white_pc}!white"
+      prob_cell = "\\cellcolor{#{prob_color}} #{"%.2f" % prob}"
+        "    #{kmer} & #{count_cell} & #{prob_cell} \\\\"
+    }.join("\n")
+  
+    table_header = "    \\textbf{homopolymer-space 16-mer} & \\textbf{n} & " + 
+                   "\\textbf{qual.} \\\\ \\hline \n"
+    latex_table = "\\begin{tabular}{|l|r|r|}\n#{table_header}#{latex_rows}\n\\hline\\end{tabular}"
+  
+  
+    def connected(k1, k2)
+      def connected_helper(s1, s2)
+        s1.zip(s2).each_with_index do |bases, i|
+          b1, b2 = bases
+          next if b1 == b2
+          return true if s1[i + 1 .. -1] == s2[i + 1 .. -1]
+          return true if s1[i .. -1] == s2[i + 1 .. -1]
+          return true if s1[i + 1 .. -1] == s2[i .. -1]
+          return false
+        end
+        false
+      end
+      k1 = k1.chars.to_a; k2 = k2.chars.to_a
+      connected_helper(k1, k2) or connected_helper(k1.reverse, k2.reverse)
+    end
+  
 
-  latex_rows = kmers.map{ |kmer, data|
-    n, prob = data
-    green_pc = ((n.to_f / kmers.first.last.first) * 100).round
-    count_color = "green!#{green_pc}!red!#{100 - white_pc}!white"
-    count_cell = "\\cellcolor{#{count_color}} #{n}"
-    green_pc = (prob * 100).round
-    prob_color = "green!#{green_pc}!red!#{100 - white_pc}!white"
-    prob_cell = "\\cellcolor{#{prob_color}} #{"%.2f" % prob}"
-      "    #{kmer} & #{count_cell} & #{prob_cell} \\\\"
-  }.join("\n")
-
-  table_header = "    \\textbf{homopolymer-space 16-mer} & \\textbf{n} & " + 
-                 "\\textbf{qual.} \\\\ \\hline \n"
-  latex_table = "\\begin{tabular}{|l|r|r|}\n#{table_header}#{latex_rows}\n\\hline\\end{tabular}"
+used = kmers.product(kmers).select{|k1, k2| connected(k1.first, k2.first)}
+                    .map{|k1, k2| [k1.first, k2.first]}.flatten.uniq
+unused = kmers.map(&:first) - used
 #+end_src
 
 #+results:
-#+begin_example
-\begin{tabular}{|l|r|r|}
-    \textbf{homopolymer-space 16-mer} & \textbf{n} & \textbf{qual.} \\ \hline 
-    GTGTACATGTCGATGC & \cellcolor{green!100!red!20!white} 113 & \cellcolor{green!100!red!20!white} 1.00 \\
-    GTGTACATGTCGATGT & \cellcolor{green!20!red!20!white} 23 & \cellcolor{green!90!red!20!white} 0.90 \\
-    GTGTACATGCGATGCT & \cellcolor{green!6!red!20!white} 7 & \cellcolor{green!80!red!20!white} 0.80 \\
-    GTGTACATGTCGTGCT & \cellcolor{green!5!red!20!white} 6 & \cellcolor{green!33!red!20!white} 0.33 \\
-    GTGTACATGTCATGCT & \cellcolor{green!5!red!20!white} 6 & \cellcolor{green!31!red!20!white} 0.31 \\
-    CTTGTACATGTCGATGC & \cellcolor{green!5!red!20!white} 6 & \cellcolor{green!26!red!20!white} 0.26 \\
-    GTGTACATGTCTGCTC & \cellcolor{green!4!red!20!white} 4 & \cellcolor{green!28!red!20!white} 0.28 \\
-    GTGTACATGTCGATTGC & \cellcolor{green!4!red!20!white} 4 & \cellcolor{green!12!red!20!white} 0.12 \\
-    GTGTACATGTGGATGCT & \cellcolor{green!4!red!20!white} 4 & \cellcolor{green!9!red!20!white} 0.09 \\
-    GTGTACATGTCCGATGC & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!41!red!20!white} 0.41 \\
-    GTGTACATGTCGAGCT & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!14!red!20!white} 0.14 \\
-    GTGTACATGTCGAATGC & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!12!red!20!white} 0.12 \\
-    GTGTACATGTCGTGTC & \cellcolor{green!3!red!20!white} 3 & \cellcolor{green!10!red!20!white} 0.10 \\
-    GTGTACATGCGATGCA & \cellcolor{green!2!red!20!white} 2 & \cellcolor{green!28!red!20!white} 0.28 \\
-    GAGTACACTGTCGCTG & \cellcolor{green!2!red!20!white} 2 & \cellcolor{green!4!red!20!white} 0.04 \\
-    GTGTACATGTCGATGA & \cellcolor{green!2!red!20!white} 2 & \cellcolor{green!3!red!20!white} 0.03 \\
-    GTGTATACATGTCGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!37!red!20!white} 0.37 \\
-    GTGTACATGCGATGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!32!red!20!white} 0.32 \\
-    GTGTACACTGTCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!25!red!20!white} 0.25 \\
-    GTGTACACTGTCCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!13!red!20!white} 0.13 \\
-    GTGTACATGTCAATGTC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!10!red!20!white} 0.10 \\
-    GTGTACATGTCATGCCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!9!red!20!white} 0.09 \\
-    CAGTACACTGTCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
-    GTGTACATGCGATGCCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
-    GTGTACATGTCGAGCCG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
-    GTGTACATGTCGAGGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!8!red!20!white} 0.08 \\
-    GAGTACACACCACTCTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!6!red!20!white} 0.06 \\
-    GTGTACATGTCATGCGG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!5!red!20!white} 0.05 \\
-    GTGTACATGTCGTGCA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!4!red!20!white} 0.04 \\
-    GTGTACATGTCGGATGC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!4!red!20!white} 0.04 \\
-    GTGTACATGCGCTGTC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!4!red!20!white} 0.04 \\
-    GTGTACATGTCGGATGCC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
-    GTGTACATGTCATGTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
-    CAGTACACTGTAGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
-    GTGTACAATGTCGTGCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
-    ATGTACGCTGTCGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!3!red!20!white} 0.03 \\
-    GAGTATACATGTCGTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
-    GTGTACATGTCTGCTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
-    GTGTACATGTCGAATGT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
-    GTTGTTACATGTCGATGC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!2!red!20!white} 0.02 \\
-    GTGTATACATGTCATG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-    CAGTACACTGTCGCTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-    GTGTACATGTCGACTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-    GTGTACATGTCGATTCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-    GTGTACATGTCGAGTA & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-    GTGTTACATGTCGATGC & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-    ATGTACGCTGTAGCTG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-    ATGTACGCTGTAGCTGG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-    GTGTTACATGTGGATGCT & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!1!red!20!white} 0.01 \\
-    GTGTACATGTCGACAGG & \cellcolor{green!1!red!20!white} 1 & \cellcolor{green!0!red!20!white} 0.00 \\
-\hline\end{tabular}
-#+end_example
 

@@ -1,0 +1,31 @@
+#+begin_src R :session
+library(ggplot2)
+library(grid)
+
+#+end_src
+
+#+results:
+| reshape2  |
+| grid      |
+| ggplot2   |
+| stats     |
+| graphics  |
+| grDevices |
+| utils     |
+| datasets  |
+| methods   |
+| base      |
+
+#+begin_src R :session :results graphics output :file ../../images/clustersize.pdf :height 3 :width 6
+sizes <- read.table("../../cluster_sizes.dat", header=TRUE)
+
+sizes <- sizes[sizes$count > 1, ]
+
+ggplot(data=sizes, aes(x=size, y=count)) + geom_point() +
+  scale_y_log10() + xlab("Cluster size") + ylab("Number of clusters") +
+   theme(plot.margin = unit(rep(0, 4), "lines"))
+#+end_src
+
+#+results:
+[[file:../../images/clustersize.pdf]]
+

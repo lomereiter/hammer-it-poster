@@ -327,6 +327,12 @@
       \end{equation*}
       where $x' \in \mathscr{N}^+$ is the sequence of nucleotides in $x$. 
     \end{block}
+
+    \begin{block}{Cluster size distribution}
+      \begin{figure}
+        \includegraphics[width=0.95\textwidth]{images/clustersize}
+      \end{figure}
+    \end{block}
   \end{textblock}
 
   \begin{textblock}{0.105}(0.670, 0.65)
@@ -334,48 +340,48 @@
       \begin{table}[ht!]
         \scalebox{0.637}{
           \ttfamily
-            \begin{tabular}{|l|r|r|}
-    \textbf{homopolymer-space 16-mer} & \textbf{n} & \textbf{qual.} \\ \hline 
-    \ CCCGTTTGT-GCGCCC-GG--CATTT-GAT & \cellcolor{green!100!red!20!white} 562 & \cellcolor{green!100!red!20!white} 1.00 \\
-    \ CCCGTTTGT-GCGCCC-GG--CATT--GAT & \cellcolor{green!2!red!20!white} 13 & \cellcolor{green!100!red!20!white} 1.00 \\
-    \ CCCGTT-GT-GCGCCC-GG--CATTT-GAT & \cellcolor{green!2!red!20!white} 10 & \cellcolor{green!100!red!20!white} 1.00 \\
-    \ CCCGTTTGT-GCGCCCCGG--CATTT-GAT & \cellcolor{green!1!red!20!white} 6 & \cellcolor{green!100!red!20!white} 1.00 \\
-    \ CCCGTTTGT-GCGCCC-GG--CATTTTGAT & \cellcolor{green!1!red!20!white} 5 & \cellcolor{green!99!red!20!white} 0.99 \\
-    \ \ CCGTTTGT-GCGCCC-GG--CATTT-GAT & \cellcolor{green!1!red!20!white} 4 & \cellcolor{green!100!red!20!white} 1.00 \\
-    CCCCGTTTGT-GCGCCC-GG--CATTT-GAT & \cellcolor{green!1!red!20!white} 4 & \cellcolor{green!98!red!20!white} 0.98 \\
-    \ \ \ CGTTTGT-GCGCCC-GG--CATTT-GAT & \cellcolor{green!1!red!20!white} 3 & \cellcolor{green!100!red!20!white} 1.00 \\
-    \ CCCGTTTGT-GCGCC--GG--CATTT-GAT & \cellcolor{green!1!red!20!white} 3 & \cellcolor{green!98!red!20!white} 0.98 \\
-    \ CCCGTTTGT-GCGCCC-GG--CATTT-GAAT & \cellcolor{green!1!red!20!white} 3 & \cellcolor{green!98!red!20!white} 0.98 \\
-    \ CCCGTTTGT-GCGCCC-GGA-CATTT-GA & \cellcolor{green!1!red!20!white} 3 & \cellcolor{green!98!red!20!white} 0.98 \\
-    \ CCCGTTTGT-GCGCCC-GG--C-TTT-GATG & \cellcolor{green!1!red!20!white} 3 & \cellcolor{green!97!red!20!white} 0.97 \\
-    \ CCCGTT-GTTGCGCCC-GG--CATTT-GAT & \cellcolor{green!0!red!20!white} 2 & \cellcolor{green!94!red!20!white} 0.94 \\
-    \ CCCGTTTGTTGCGCCC-GG--CATTT-GAT & \cellcolor{green!0!red!20!white} 2 & \cellcolor{green!94!red!20!white} 0.94 \\
-    \ CCCGTTTGGTGCGCCC-GG--CATTT-GAT & \cellcolor{green!0!red!20!white} 2 & \cellcolor{green!93!red!20!white} 0.93 \\
-    \ CCCGTTTGT-GCGCCC-GG--CATTT-GAG & \cellcolor{green!0!red!20!white} 2 & \cellcolor{green!89!red!20!white} 0.89 \\
-    \ CCCGTTTGT-GCGCCC-GG--CATTTGGAT & \cellcolor{green!0!red!20!white} 2 & \cellcolor{green!74!red!20!white} 0.74 \\
-    \ CCCGTTTGT-GCGCTC-GG--CATTT-G & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!97!red!20!white} 0.97 \\
-    \ CCCGTTTGTG-CGCCC-GG--CACTTTGA & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!87!red!20!white} 0.87 \\
-    \ CCCGTTTGTG-CGCCC-GG-CCATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!85!red!20!white} 0.85 \\
-    \ CCCGTTTGTGC-GCCC-G---CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!83!red!20!white} 0.83 \\
-    \ CCCGTTTGTGC-GCCC-GG--CATTT-GGTG & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!74!red!20!white} 0.74 \\
-    \ \ CCGTTTGTGCCGCCC-GG--CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!71!red!20!white} 0.71 \\
-    \ CCCGTTTTGTGCGCCC-GG--CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!69!red!20!white} 0.69 \\
-    \ CCCGTTTGT-GCGCCC-GGTACATTT-G & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!68!red!20!white} 0.68 \\
-    \ CCCGTTTGT-GCGCCC-GG--CATTTCGA & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!68!red!20!white} 0.68 \\
-    \ CCCGTTTGTGCCGCCC-GG--CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!66!red!20!white} 0.66 \\
-    \ \ CCGTT-GT-GCGCC--GG--CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!66!red!20!white} 0.66 \\
-    \ CCCGTTTGTG-CGCCC-GGG-CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!61!red!20!white} 0.61 \\
-    \ CCCGTTTGT-GCGCCC-GGACCATTT-GA & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!61!red!20!white} 0.61 \\
-    \ CCCGTTTGTGC-GCCC-GG--CATTTTGTA & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!58!red!20!white} 0.58 \\
-    \ CCCGTTTGTGGCGCCC-GG--CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!57!red!20!white} 0.57 \\
-    \ CCCGTTTGTGC-GCCC-GGA-CATTT-AG & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!56!red!20!white} 0.56 \\
-    \ CCCGTTTGT-GCGCCC-GG--CATTT-AGT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!55!red!20!white} 0.55 \\
-    \ \ CCGTTTGTGC-GCC--GG--CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!54!red!20!white} 0.54 \\
-    \ CCCGTT-GTGC-GCCC-GGG-CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!44!red!20!white} 0.44 \\
-    \ CCCGTTTGTGCCGCCCTGG--CATTT-GA & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!43!red!20!white} 0.43 \\
-    \ CCCGTTTTGTGCGCCC-GG--CATTTTGAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!36!red!20!white} 0.36 \\
-    \ CCCGTTTGGTGCGCCCCGG--CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!22!red!20!white} 0.22 \\
-\hline\end{tabular}
+          \begin{tabular}{|l|r|r|}
+            \textbf{homopolymer-space 16-mer}  & \textbf{n}                             & \textbf{qual.}                          \\ \hline 
+            \ CCCGTTTGT-GCGCCC-GG--CATTT-GAT   & \cellcolor{green!100!red!20!white} 562 & \cellcolor{green!100!red!20!white} 1.00 \\
+            \ CCCGTTTGT-GCGCCC-GG--CATT--GAT   & \cellcolor{green!2!red!20!white} 13    & \cellcolor{green!100!red!20!white} 1.00 \\
+            \ CCCGTT-GT-GCGCCC-GG--CATTT-GAT   & \cellcolor{green!2!red!20!white} 10    & \cellcolor{green!100!red!20!white} 1.00 \\
+            \ CCCGTTTGT-GCGCCCCGG--CATTT-GAT   & \cellcolor{green!1!red!20!white} 6     & \cellcolor{green!100!red!20!white} 1.00 \\
+            \ CCCGTTTGT-GCGCCC-GG--CATTTTGAT   & \cellcolor{green!1!red!20!white} 5     & \cellcolor{green!99!red!20!white} 0.99  \\
+            \ \ CCGTTTGT-GCGCCC-GG--CATTT-GAT  & \cellcolor{green!1!red!20!white} 4     & \cellcolor{green!100!red!20!white} 1.00 \\
+            CCCCGTTTGT-GCGCCC-GG--CATTT-GAT    & \cellcolor{green!1!red!20!white} 4     & \cellcolor{green!98!red!20!white} 0.98  \\
+            \ \ \ CGTTTGT-GCGCCC-GG--CATTT-GAT & \cellcolor{green!1!red!20!white} 3     & \cellcolor{green!100!red!20!white} 1.00 \\
+            \ CCCGTTTGT-GCGCC--GG--CATTT-GAT   & \cellcolor{green!1!red!20!white} 3     & \cellcolor{green!98!red!20!white} 0.98  \\
+            \ CCCGTTTGT-GCGCCC-GG--CATTT-GAAT  & \cellcolor{green!1!red!20!white} 3     & \cellcolor{green!98!red!20!white} 0.98  \\
+            \ CCCGTTTGT-GCGCCC-GGA-CATTT-GA    & \cellcolor{green!1!red!20!white} 3     & \cellcolor{green!98!red!20!white} 0.98  \\
+            \ CCCGTTTGT-GCGCCC-GG--C-TTT-GATG  & \cellcolor{green!1!red!20!white} 3     & \cellcolor{green!97!red!20!white} 0.97  \\
+            \ CCCGTT-GTTGCGCCC-GG--CATTT-GAT   & \cellcolor{green!0!red!20!white} 2     & \cellcolor{green!94!red!20!white} 0.94  \\
+            \ CCCGTTTGTTGCGCCC-GG--CATTT-GAT   & \cellcolor{green!0!red!20!white} 2     & \cellcolor{green!94!red!20!white} 0.94  \\
+            \ CCCGTTTGGTGCGCCC-GG--CATTT-GAT   & \cellcolor{green!0!red!20!white} 2     & \cellcolor{green!93!red!20!white} 0.93  \\
+            \ CCCGTTTGT-GCGCCC-GG--CATTT-GAG   & \cellcolor{green!0!red!20!white} 2     & \cellcolor{green!89!red!20!white} 0.89  \\
+            \ CCCGTTTGT-GCGCCC-GG--CATTTGGAT   & \cellcolor{green!0!red!20!white} 2     & \cellcolor{green!74!red!20!white} 0.74  \\
+            \ CCCGTTTGT-GCGCTC-GG--CATTT-G     & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!97!red!20!white} 0.97  \\
+            \ CCCGTTTGTG-CGCCC-GG--CACTTTGA    & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!87!red!20!white} 0.87  \\
+            \ CCCGTTTGTG-CGCCC-GG-CCATTT-GAT   & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!85!red!20!white} 0.85  \\
+            \ CCCGTTTGTGC-GCCC-G---CATTT-GAT   & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!83!red!20!white} 0.83  \\
+            \ CCCGTTTGTGC-GCCC-GG--CATTT-GGTG  & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!74!red!20!white} 0.74  \\
+            \ \ CCGTTTGTGCCGCCC-GG--CATTT-GAT  & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!71!red!20!white} 0.71  \\
+            \ CCCGTTTTGTGCGCCC-GG--CATTT-GAT   & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!69!red!20!white} 0.69  \\
+            \ CCCGTTTGT-GCGCCC-GGTACATTT-G     & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!68!red!20!white} 0.68  \\
+            \ CCCGTTTGT-GCGCCC-GG--CATTTCGA    & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!68!red!20!white} 0.68  \\
+            \ CCCGTTTGTGCCGCCC-GG--CATTT-GAT   & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!66!red!20!white} 0.66  \\
+            \ \ CCGTT-GT-GCGCC--GG--CATTT-GAT  & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!66!red!20!white} 0.66  \\
+            \ CCCGTTTGTG-CGCCC-GGG-CATTT-GAT   & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!61!red!20!white} 0.61  \\
+            \ CCCGTTTGT-GCGCCC-GGACCATTT-GA    & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!61!red!20!white} 0.61  \\
+            \ CCCGTTTGTGC-GCCC-GG--CATTTTGTA   & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!58!red!20!white} 0.58  \\
+            \ CCCGTTTGTGGCGCCC-GG--CATTT-GAT   & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!57!red!20!white} 0.57  \\
+            \ CCCGTTTGTGC-GCCC-GGA-CATTT-AG    & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!56!red!20!white} 0.56  \\
+            \ CCCGTTTGT-GCGCCC-GG--CATTT-AGT   & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!55!red!20!white} 0.55  \\
+            \ \ CCGTTTGTGC-GCC--GG--CATTT-GAT  & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!54!red!20!white} 0.54  \\
+            \ CCCGTT-GTGC-GCCC-GGG-CATTT-GAT   & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!44!red!20!white} 0.44  \\
+            \ CCCGTTTGTGCCGCCCTGG--CATTT-GA    & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!43!red!20!white} 0.43  \\
+            \ CCCGTTTTGTGCGCCC-GG--CATTTTGAT   & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!36!red!20!white} 0.36  \\
+            \ CCCGTTTGGTGCGCCCCGG--CATTT-GAT   & \cellcolor{green!0!red!20!white} 1     & \cellcolor{green!22!red!20!white} 0.22  \\
+            \hline\end{tabular}
         }
       \end{table}
     \end{block}

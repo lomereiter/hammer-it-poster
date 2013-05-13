@@ -52,6 +52,84 @@ kmers_json = <<JSON
 , "GTGTACACTGTCCGCTA": [1, 0.128547]
 }
 JSON
+
+kmers_json = <<JSON
+{ "A-TGGGAAAA-CG-CCTGGGGG-CGG-CGG-ATG": [795, 1] 
+, "A-TGGGAAAAACG-CCTGGGGG-CGG-CGG-ATG": [17, 1] 
+, "A-TGGGAAAA-CG-CCTGGGG--CGG-CGG-ATG": [17, 1] 
+, "A-TGGGAAAA-CG-CCTGGGGG-CGG-CGG-ATGG": [8, 0.999278] 
+, "A-TGGGAAAA-CGGCCTGGGGG-CGG-CGG-ATG": [7, 0.998765] 
+, "A-TGGGAAAA-CG--CTGGGGG-CGG-CGG-ATG": [7, 0.998077] 
+, "A-TGGGAAAA-CG-CCTGGGGG-CGGGCGG-ATG": [4, 0.969308] 
+, "A-TGGGAAAA-CG-CCTGGGGG-CG--CGG-ATG": [4, 0.98929] 
+, "A-TGGGAAAA-CG-CCTGGGGGACGG-CGG-AT": [3, 0.909849] 
+, "A-TGG-AAAA-CG-CCTGGGGG-CGG-CGG-ATG": [3, 0.947614] 
+, "A-TGGGAAAA-CG-CCTGGGGG-CGG-CG--ATG": [3, 0.963118] 
+, "A-TGGGAAAA-CG-CCTGGGGG-CGG-CGGGATG": [3, 0.969946] 
+, "A-TGGGAAAA-CG-CCTGGGGG-CGGGCGG-ATGG": [2, 0.656617] 
+, "ATTGGGAAAA-CG-CCTGGGGG-CGG-CGG-ATG": [1, 0.675007] 
+, "A-TGGGAAAAACG-CCTGGGGG-CGGGCGG-ATG": [1, 0.450887] 
+, "A-TGGGAAAA-CG-CCTGGGGG-CGG-CGG--TGT": [1, 0.78751] 
+, "A-TGGAAAA--CG-CCTGGGGG-CGG-CGA-ATG": [1, 0.478588] 
+, "A-TGGGAAAA-CG-CCTGGGGG-CGG-CGGG-TGT": [1, 0.474078] 
+, "A-TGGGAAAA-CG-CCTGAGGG-CGG-CGG-A": [1, 0.610069] 
+, "A-TGGGAAAA-CG-CCTGGGGG-CGGCCGG-ATG": [1, 0.349435] 
+, "A-TGGGAAAA-CG--CTGGGG--CGG-CGG-ATG": [1, 0.306085] 
+, "G-TGG-AAAA-CG-CCTGGGGG-CGG-CGG-ATG": [1, 0.893274] 
+, "A-TGGGAAAA-CG--CTGGGGG-CGGGCGG-ATG": [1, 0.4885] 
+, "A-TGGGAAAA-CG-CTTGGGGG-CGG-CGG-ATG": [1, 0.818235] 
+, "A-TGGGGAAA-CG-CCTGGGGG-CGGGCGG-ATG": [1, 0.34356] 
+, "A-TGGGAAAA-CGCCCTGGGGG-CGG-CGG-ATG": [1, 0.548108] 
+, "A-TGGGGAAA-CG-CCTGGGGG-CGG-CGGGATG": [1, 0.539718] 
+, "A-TGGGGAAA-CG-CCTGGGGG-CGG-CGG-ATG": [1, 0.586702] 
+, "A-TGGGAAAA-CG-CCTGGG---CGG-CGG-ATG": [1, 0.701477] 
+, "A-TGGGAAAA-CG--CTGGGGG-CGG-CGGGATG": [1, 0.411132] 
+, "A-TGGGAAAA-CG-CCTGGGGG-AGG-CGG-ATG": [1, 0.524602] 
+}
+JSON
+
+kmers_json = <<JSON
+{ " CCCGTTTGT-GCGCCC-GG--CATTT-GAT": [562, 1] 
+, " CCCGTTTGT-GCGCCC-GG--CATT--GAT": [13, 1] 
+, " CCCGTT-GT-GCGCCC-GG--CATTT-GAT": [10, 0.999991] 
+, " CCCGTTTGT-GCGCCCCGG--CATTT-GAT": [6, 0.99835] 
+, " CCCGTTTGT-GCGCCC-GG--CATTTTGAT": [5, 0.987481] 
+, "CCCCGTTTGT-GCGCCC-GG--CATTT-GAT": [4, 0.98077] 
+, "  CCGTTTGT-GCGCCC-GG--CATTT-GAT": [4, 0.999432] 
+, " CCCGTTTGT-GCGCCC-GG--C-TTT-GATG": [3, 0.965538] 
+, "   CGTTTGT-GCGCCC-GG--CATTT-GAT": [3, 0.999182] 
+, " CCCGTTTGT-GCGCCC-GGA-CATTT-GA": [3, 0.978143] 
+, " CCCGTTTGT-GCGCC--GG--CATTT-GAT": [3, 0.980935] 
+, " CCCGTTTGT-GCGCCC-GG--CATTT-GAAT": [3, 0.979496] 
+, " CCCGTT-GTTGCGCCC-GG--CATTT-GAT": [2, 0.937342] 
+, " CCCGTTTGTTGCGCCC-GG--CATTT-GAT": [2, 0.936645] 
+, " CCCGTTTGT-GCGCCC-GG--CATTTGGAT": [2, 0.739905] 
+, " CCCGTTTGT-GCGCCC-GG--CATTT-GAG": [2, 0.885476] 
+, " CCCGTTTGGTGCGCCC-GG--CATTT-GAT": [2, 0.926834] 
+, " CCCGTTTGTGGCGCCC-GG--CATTT-GAT": [1, 0.565436] 
+, " CCCGTTTTGTGCGCCC-GG--CATTT-GAT": [1, 0.692469] 
+, " CCCGTTTGTGCCGCCCTGG--CATTT-GA": [1, 0.432532] 
+, "  CCGTT-GT-GCGCC--GG--CATTT-GAT": [1, 0.664104] 
+, " CCCGTTTGT-GCGCCC-GG--CATTT-AGT": [1, 0.548287] 
+, " CCCGTTTGT-GCGCCC-GG--CATTTCGA": [1, 0.679843] 
+, " CCCGTTTGT-GCGCCC-GGACCATTT-GA": [1, 0.609952] 
+, " CCCGTTTGT-GCGCTC-GG--CATTT-G": [1, 0.97193] 
+, " CCCGTTTGT-GCGCCC-GGTACATTT-G": [1, 0.680569] 
+, " CCCGTTTGTGCCGCCC-GG--CATTT-GAT": [1, 0.664559] 
+, " CCCGTT-GTGC-GCCC-GGG-CATTT-GAT": [1, 0.437224] 
+, "  CCGTTTGTGCCGCCC-GG--CATTT-GAT": [1, 0.70564] 
+, " CCCGTTTGTGC-GCCC-GG--CATTTTGTA": [1, 0.575553] 
+, "  CCGTTTGTGC-GCC--GG--CATTT-GAT": [1, 0.542131] 
+, " CCCGTTTTGTGCGCCC-GG--CATTTTGAT": [1, 0.355058] 
+, " CCCGTTTGTGC-GCCC-GGA-CATTT-AG": [1, 0.560674] 
+, " CCCGTTTGTGC-GCCC-GG--CATTT-GGTG": [1, 0.742742] 
+, " CCCGTTTGTGC-GCCC-G---CATTT-GAT": [1, 0.834897] 
+, " CCCGTTTGGTGCGCCCCGG--CATTT-GAT": [1, 0.221876] 
+, " CCCGTTTGTG-CGCCC-GGG-CATTT-GAT": [1, 0.612529] 
+, " CCCGTTTGTG-CGCCC-GG--CACTTTGA": [1, 0.868625] 
+, " CCCGTTTGTG-CGCCC-GG-CCATTT-GAT": [1, 0.851322] 
+}
+JSON
       
     require 'json'
     kmers = JSON.parse(kmers_json).sort_by{|k, v| v.map{|x| -x}}
@@ -66,7 +144,7 @@ JSON
       green_pc = (prob * 100).round
       prob_color = "green!#{green_pc}!red!#{100 - white_pc}!white"
       prob_cell = "\\cellcolor{#{prob_color}} #{"%.2f" % prob}"
-        "    #{kmer} & #{count_cell} & #{prob_cell} \\\\"
+        "    #{kmer.gsub(' ', '\ ')} & #{count_cell} & #{prob_cell} \\\\"
     }.join("\n")
   
     table_header = "    \\textbf{homopolymer-space 16-mer} & \\textbf{n} & " + 
@@ -94,7 +172,57 @@ JSON
 used = kmers.product(kmers).select{|k1, k2| connected(k1.first, k2.first)}
                     .map{|k1, k2| [k1.first, k2.first]}.flatten.uniq
 unused = kmers.map(&:first) - used
+
+
+latex_table
 #+end_src
 
 #+results:
+#+begin_example
+\begin{tabular}{|l|r|r|}
+    \textbf{homopolymer-space 16-mer} & \textbf{n} & \textbf{qual.} \\ \hline 
+    \ CCCGTTTGTGCGCCC-GG--CATTT-GAT & \cellcolor{green!100!red!20!white} 562 & \cellcolor{green!100!red!20!white} 1.00 \\
+    \ CCCGTTTGTGCGCCC-GG--CATT--GAT & \cellcolor{green!2!red!20!white} 13 & \cellcolor{green!100!red!20!white} 1.00 \\
+    \ CCCGTT-GTGCGCCC-GG--CATTT-GAT & \cellcolor{green!2!red!20!white} 10 & \cellcolor{green!100!red!20!white} 1.00 \\
+    \ CCCGTTTGTGCGCCCCGG--CATTT-GAT & \cellcolor{green!1!red!20!white} 6 & \cellcolor{green!100!red!20!white} 1.00 \\
+    \ CCCGTTTGTGCGCCC-GG--CATTTTGAT & \cellcolor{green!1!red!20!white} 5 & \cellcolor{green!99!red!20!white} 0.99 \\
+    \ \ CCGTTTGTGCGCCC-GG--CATTT-GAT & \cellcolor{green!1!red!20!white} 4 & \cellcolor{green!100!red!20!white} 1.00 \\
+    CCCCGTTTGTGCGCCC-GG--CATTT-GAT & \cellcolor{green!1!red!20!white} 4 & \cellcolor{green!98!red!20!white} 0.98 \\
+    \ \ \ CGTTTGTGCGCCC-GG--CATTT-GAT & \cellcolor{green!1!red!20!white} 3 & \cellcolor{green!100!red!20!white} 1.00 \\
+    \ CCCGTTTGTGCGCC--GG--CATTT-GAT & \cellcolor{green!1!red!20!white} 3 & \cellcolor{green!98!red!20!white} 0.98 \\
+    \ CCCGTTTGTGCGCCC-GG--CATTT-GAAT & \cellcolor{green!1!red!20!white} 3 & \cellcolor{green!98!red!20!white} 0.98 \\
+    \ CCCGTTTGTGCGCCC-GGA-CATTT-GA & \cellcolor{green!1!red!20!white} 3 & \cellcolor{green!98!red!20!white} 0.98 \\
+    \ CCCGTTTGTGCGCCC-GG--C-TTT-GATG & \cellcolor{green!1!red!20!white} 3 & \cellcolor{green!97!red!20!white} 0.97 \\
+    \ CCCGTTGTTGCGCCC-GG--CATTT-GAT & \cellcolor{green!0!red!20!white} 2 & \cellcolor{green!94!red!20!white} 0.94 \\
+    \ CCCGTTTGTTGCGCCCGG--CATTT-GAT & \cellcolor{green!0!red!20!white} 2 & \cellcolor{green!94!red!20!white} 0.94 \\
+    \ CCCGTTTGGTGCGCCCGG--CATTT-GAT & \cellcolor{green!0!red!20!white} 2 & \cellcolor{green!93!red!20!white} 0.93 \\
+    \ CCCGTTTGT-GCGCCCGG--CATTT-GAG & \cellcolor{green!0!red!20!white} 2 & \cellcolor{green!89!red!20!white} 0.89 \\
+    \ CCCGTTTGT-GCGCCCGG--CATTTGGAT & \cellcolor{green!0!red!20!white} 2 & \cellcolor{green!74!red!20!white} 0.74 \\
+    \ CCCGTTTGTGC-GCTCGG--CATTT-G & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!97!red!20!white} 0.97 \\
+    \ CCCGTTTGTG-CGCCCGG-CACTTT-GA & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!87!red!20!white} 0.87 \\
+    \ CCCGTTTGTG-CGCCCGG-CCATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!85!red!20!white} 0.85 \\
+    \ CCCGTTTGTGC-GCCCG---CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!83!red!20!white} 0.83 \\
+    \ CCCGTTTGTGC-GCCCGG--CATTT-GGTG & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!74!red!20!white} 0.74 \\
+    \ \ CCGTTTGTGCCGCCCGG--CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!71!red!20!white} 0.71 \\
+    \ CCCGTTTTGTGCGCCCGG--CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!69!red!20!white} 0.69 \\
+    \ CCCGTTTGTGC-GCCCGGTACATTT-G & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!68!red!20!white} 0.68 \\
+    \ CCCGTTTGTGC-GCCC-GG-CATTTCGA & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!68!red!20!white} 0.68 \\
+    \ CCCGTTTGTGCCGCCC-GG-CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!66!red!20!white} 0.66 \\
+    \ \ CCGTT-GTGC-GCC--GG-CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!66!red!20!white} 0.66 \\
+    \ CCCGTTTGTG-CGCCCGGG-CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!61!red!20!white} 0.61 \\
+    \ CCCGTTTGTGC-GCCCGGACCATTT-GA & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!61!red!20!white} 0.61 \\
+    \ CCCGTTTGTGC-GCCCGG-CATTTT-GTA & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!58!red!20!white} 0.58 \\
+    \ CCCGTTTGTGGCGCCCGG--CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!57!red!20!white} 0.57 \\
+    \ CCCGTTTGTGC-GCCCGGA-CATTT-AG & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!56!red!20!white} 0.56 \\
+    \ CCCGTTTGTGC-GCCC-GG-CATTT-AGT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!55!red!20!white} 0.55 \\
+    \ \ CCGTTTGTGC-GCC-GG--CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!54!red!20!white} 0.54 \\
+    \ CCCGTT-GTGC-GCCCGGG-CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!44!red!20!white} 0.44 \\
+    \ CCCGTTTGTGCCGCCCTGG-CATTT-GA & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!43!red!20!white} 0.43 \\
+    \ CCCGTTTTGTGCGCCCGG-CATTTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!36!red!20!white} 0.36 \\
+    \ CCCGTTTGGTGCGCCCCGG-CATTT-GAT & \cellcolor{green!0!red!20!white} 1 & \cellcolor{green!22!red!20!white} 0.22 \\
+\hline\end{tabular}
+#+end_example
+
+
+
 

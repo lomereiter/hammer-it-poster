@@ -16,7 +16,7 @@ library(grid)
 | methods   |
 | base      |
 
-#+begin_src R :session :results graphics output :file ../../images/clustersize.pdf :height 3 :width 6
+#+begin_src R :session :results graphics output :file ../../images/clustersize.pdf :height 3 :width 7
 sizes <- read.table("../../cluster_sizes.dat", header=TRUE)
 
 sizes <- sizes[sizes$count > 1, ]

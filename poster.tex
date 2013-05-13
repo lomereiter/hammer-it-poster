@@ -323,14 +323,15 @@
       is defined as $\Pr(x\textrm{ is genomic})$.
       For the set of reads $\mathscr{R} \subset \mathscr{N}^+$ the quality of $x \in \mathscr{H}^k$ is computed as
       \begin{equation*}
-        \prod_{r \in \mathscr{R}}\prod_{\substack{0 \leq m \leq |r| - |x'|, \\ r[m\textrm{ .. }m + |x'| - 1] = x'}}\prod_{m\leq n < m + |x'|}\Pr(r[n]\textrm{ is correct})\,\mathrm{,}
+        1 - \prod_{r \in \mathscr{R}}\prod_{\substack{0 \leq m \leq |r| - |x'|, \\ r[m\textrm{ .. }m + |x'| - 1] =
+            x'}}\left(1 - \prod_{m\leq n < m + |x'|}\Pr(r[n]\textrm{ is correct})\right)\,\mathrm{,}
       \end{equation*}
       where $x' \in \mathscr{N}^+$ is the sequence of nucleotides in $x$. 
     \end{block}
 
     \begin{block}{Cluster size distribution}
       \begin{figure}
-        \includegraphics[width=0.95\textwidth]{images/clustersize}
+        \includegraphics[width=\textwidth]{images/clustersize}
       \end{figure}
     \end{block}
   \end{textblock}

@@ -9,6 +9,9 @@
 \usepackage[mathscr]{euscript}
 \usepackage{amssymb}
 \usepackage{tangocolors}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
 \setbeamercolor{headline}{fg=tabutter,bg=ta2aluminium}
 \setbeamercolor{separation line}{bg=ta2orange}
 \setbeamercolor{title in headline}{fg=ta3skyblue}
@@ -103,6 +106,10 @@
 \setlength{\TPHorizModule}{\paperwidth}
 \setlength{\TPVertModule}{\paperheight}
 \begin{document}
+
+
+      \newcolumntype{C}[1]{>{\vbox to 1em\bgroup\vfill\centering}p{#1} <{\egroup}} 
+
 \begin{frame}
 
   \begin{textblock}{0.450}(0.01, 0.06)
@@ -310,6 +317,54 @@
            \EndFor
          \EndFor
       \end{algorithmic}
+    \end{block}
+  \end{textblock}
+
+  \begin{textblock}{0.215}(0.780, 0.06)
+    \begin{block}{Assembly results}
+      We have assembled \emph{E.coli O157 H7 Sakai} 400bp reads before and after correction with MIRA 3.4.1.1 and SPAdes 2.4.0. For
+      the MIRA assembler, the reads were subsampled to get $_{\widetilde{~}}$40x coverage as recommended by the authors of the
+      original benchmark, whereas SPAdes assembler operated on the full dataset ($_{\widetilde{~}}$200x).
+
+      Length of the reference genome is 5498450 bp.
+      \vspace{0.1em}
+      \begin{table}[ht]
+        \caption{Assembly results, E.coli Sakai dataset (400bp). Contigs of length $\geq 500$ are used.}
+      \begin{tabularx}{\textwidth}{>{\fontsize{21.5}{24}\fontencoding{T1}\fontfamily{lmss}\fontseries{b}\selectfont}X|c|c|c|c}\toprule
+                                    & \multicolumn{2}{c|}{\bfseries MIRA 3.4.1.1} & \multicolumn{2}{c}{\bfseries SPAdes 2.4.0}   \\
+                                    \cline{2-3} \cline{4-5}
+                                    & uncorrected                     & corrected & uncorrected & corrected \\ \midrule
+                                    
+        \# contigs                 \rule{0pt}{4ex} & 178                             & 197       & 266         & 242       \\[1.0em]
+        Largest contig              & 378520                          & 378249    & 316904      & 374932    \\[1.0em]
+        Total length                & 5510229                         & 5517674   & 5322223     & 5320566   \\[1.0em]
+        N50                         & 147710                          & 124917    & 111277      & 146551    \\[1.0em]
+        N75                         & 76533                           & 70728     & 44319       & 65938     \\[1.0em]
+        \# misassemblies            & 23                              & 19        & 0           & 2         \\[1.0em]
+        \# local misassemblies      & 17                              & 20        & 8           & 11        \\[1.0em]
+        Misassembled contigs length & 842594                          & 567793    & 0           & 32563     \\[1.0em]
+        Genome fraction (\%)        & 97.241                          & 97.441    & 93.880      & 93.966    \\[1.0em]
+        Duplication ratio           & 1.011                           & 1.015     & 1.001       & 1.001     \\[1.0em]
+        \# mismatches per 100 kbp   & 12.68                           & 22.25     & 3.58        & 4.70      \\[1.0em]
+        \# indels per 100 kbp       & 9.85                            & 6.64      & 6.21        & 5.88      \\\bottomrule
+      \end{tabularx}
+      \end{table}
+
+      \vspace{1em}
+      {\footnotesize
+      Command-line parameters used for assembly
+      \begin{table}[ht]
+        \begin{tabularx}{\textwidth}{c|>{\tt\footnotesize}X}\hline
+          MIRA 3.4.1.1 & --job=denovo,genome,accurate,iontor --notraceinfo IONTOR\_SETTINGS -ASSEMBLY:mprc=100 \\ \hline
+          SPAdes 2.4.0 & --only-assembler -k 21,33,55,77,99 \\
+        \end{tabularx}
+      \end{table}
+      }
+
+    \end{block}
+    \begin{block}{Acknowledgements}
+      FILLME
+      \vspace{8.9em}
     \end{block}
   \end{textblock}
 

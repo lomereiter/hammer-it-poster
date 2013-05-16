@@ -46,3 +46,7 @@
   
   plot.errorrates("sakai_pgm_400bp", 400)
 #+end_src
+
+#+results:
+[[file:images/error_rate_vs_offset.pdf]]
+

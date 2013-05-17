@@ -1,4 +1,4 @@
-#+begin_src R :results output graphics :file images/error_rate_vs_offset.pdf :width 7 :height 3.5
+#+begin_src R :results output graphics :file images/error_rate_vs_offset.pdf :width 7 :height 3.2
     freqs <- function(df) {
       df$subst.freq <- df$subst/df$total
       df$ins.freq <- df$ins/df$total

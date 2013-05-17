@@ -11,6 +11,7 @@
 \usepackage{tangocolors}
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage{color}
 \usepackage{booktabs}
 \setbeamercolor{headline}{fg=tabutter,bg=ta2aluminium}
 \setbeamercolor{separation line}{bg=ta2orange}
@@ -25,7 +26,7 @@
 \setbeamercolor*{normal text}{fg=tachameleon, bg=ta3gray}
 \setbeamercolor*{block body}{bg=white,fg=ta3gray}
 \setbeamercolor*{block title}{fg=taorange,bg=ta2gray}
-\setbeamerfont{block title}{size=\Large,series=\bf}
+\setbeamerfont{block title}{size=\Large}
 \setbeamercolor{upper separation line head}{fg=ta2orange}
 
 \setbeamercolor*{example body}{fg=ta3aluminium,bg=black}
@@ -57,19 +58,19 @@
   \leavevmode
 
   \begin{beamercolorbox}[wd=\paperwidth]{headline}
-    \begin{columns}[T]
-      \begin{column}{.1\paperwidth}
-      \end{column}
-      \begin{column}{.8\paperwidth}
+%    \begin{columns}[T]
+%      \begin{column}{.1\paperwidth}
+%      \end{column}
+%      \begin{column}{.8\paperwidth}
         \vskip4ex
-        \raggedleft
-        \usebeamercolor{title in headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
-        \usebeamercolor{author in headline}{\color{fg}\Large{\insertauthor}\\[1ex]}
+        \centering
+        \usebeamercolor{title in headline}{\color{fg}\textbf{\Huge{\inserttitle}}\\[1ex]}
+        \usebeamercolor{author in headline}{\color{fg}\LARGE{\insertauthor}\\[1ex]}
         \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}     
-      \end{column}
-      \begin{column}{.1\paperwidth}
-      \end{column}
-    \end{columns}
+%      \end{column}
+%      \begin{column}{.1\paperwidth}
+%      \end{column}
+%    \end{columns}
   \end{beamercolorbox}
 
   \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
@@ -99,30 +100,79 @@
 \end{center}
 }
 
-\author{Anton Korobeynikov, Artem Tarasov}
+\author{Anton Korobeynikov$^{1,2}$, Artem Tarasov$^{1}$}
 \title{HammerIT: homopolymer-space Hamming clustering for IonTorrent read error correction}
-\institute{St. Petersburg State University, Russia}
+\institute{$^{1}$ Department of Statistical Modelling, St. Petersburg State University, St. Petersburg, Russia;
+           $^{2}$ Algorithmic Biology Laboratory, St. Petersburg Academic University, St. Petersburg, Russia
+}
 
 \setlength{\TPHorizModule}{\paperwidth}
 \setlength{\TPVertModule}{\paperheight}
 \begin{document}
 
 
-      \newcolumntype{C}[1]{>{\vbox to 1em\bgroup\vfill\centering}p{#1} <{\egroup}} 
+\newcolumntype{C}[1]{>{\vbox to 1em\bgroup\vfill\centering}p{#1} <{\egroup}} 
 
 \begin{frame}
 
-  \begin{textblock}{0.450}(0.01, 0.06)
-    \begin{block}{Introduction}
-      FILLME
-      \vspace{11em}
+    \begin{textblock}{0.450}(0.01, 0.075)
+      \begin{block}{Introduction\phantom{p}}
+        Error correction of sequenced reads remains a difficult task,
+        especially for data obtained using IonTorrent technology due to its
+        higher error rate. The task is even more challenging in single-cell
+        sequencing projects with extremely non-uniform coverage.
+
+        The existing error correction tools assume that the most sequencing
+        errors in the data are mismatches and thus perform poorly on
+        IonTorrent data with its prevailing errors due to homopolymer
+        indels.
+
+        We introduce \textsc{HammerIT}~--- a novel error correction tool
+        which is specifically tuned for IonTorrent sequencing
+        errors.
+      \end{block}
+    \end{textblock}
+
+    \begin{textblock}{0.215}(0.01,0.190)
+    \begin{block}{IonTorrent error profile}
+      Corrected flow signal intensities are available in BAM files
+      produced by versions of Ion Torrent Suite prior to 3.4. Called
+      homopolymer length is obtained as corrected flow signal
+      intensity rounded to the nearest integer.
+
+      We have studied flow signal intensity distributions around
+      insertion/deletion sites. File B7-295.bam, downloaded from Ion
+      Community website, contained 4.6M~insertions, 5.0M~deletions,
+      and 1.5M~mismatches.
+      
+      Overwhelming majority of errors turned out to be
+      insertions/deletions of length~1, occuring when flow signal
+      intensity is approximately halfway between two adjacent
+      integers.
+      \vspace{0.4em}
+
+      \begin{figure}[h!]
+        \caption{Flow signal intensities at insertion sites}
+        \includegraphics[width=\textwidth]{images/overcalls}
+      \end{figure}
+
+      \begin{figure}[h!]
+        \caption{Flow signal intensities at deletion sites}
+        \includegraphics[width=\textwidth]{images/undercalls}
+      \end{figure}
+%      More detailed analysis of errors in IonTorrent data can be found
+%      in the article
+%      ``Shining a Light on Dark Sequencing: Characterising Errors in
+%      Ion Torrent PGM Data'' \emph{(PLoS~Comput~Biol~9(4))}     
     \end{block}
   \end{textblock}
-  \begin{textblock}{0.215}(0.01, 0.21)
 
-    \begin{block}{Notation}
-      {\large
+
+  \begin{textblock}{0.230}(0.230, 0.190)
+    \begin{block}{Notation\phantom{p}}
+      %{\large
       Let $\mathscr{N}$ denote the nucleotide alphabet $\left\{\textrm{A, C, G, T}\right\}$.
+
       By~definition, put $\mathscr{H} = \mathscr{N} \times \mathbb{N}^+$.
 
       We call an~element of~the~alphabet~$\mathscr{H}$~a~\emph{homopolymer run},
@@ -135,7 +185,7 @@
       Distance between $i,\;j \in \mathscr{H}^k$  is defined as the
       minimum number of $1$-base insertions/deletions/mismatches needed to align common part of $i$ and $j$.
       It is denoted by $\mathrm{dist}(i, j)$.
-      }
+      %}
     \end{block}
 
     \begin{block}{HammerIT workflow}
@@ -164,48 +214,12 @@
     
   \end{textblock}
 
-  \begin{textblock}{0.23}(0.230, 0.21)
-    \begin{block}{IonTorrent error profile}
-      Corrected flow signal intensities are available in BAM files
-      produced by versions of Ion Torrent Suite prior to 3.4. Called
-      homopolymer length is obtained as corrected flow signal
-      intensity rounded to the nearest integer.
-
-      We have studied flow signal intensity distributions around
-      insertion/deletion sites. File B7-295.bam, downloaded from Ion
-      Community website, contained 4.6M~insertions, 5.0M~deletions,
-      and 1.5M~mismatches.
-      
-      Overwhelming majority of errors turned out to be
-      insertions/deletions of length~1, occuring when flow signal
-      intensity is approximately halfway between two adjacent
-      integers.
-
-      \begin{figure}[h!]
-        \caption{Flow signal intensities at insertion sites}
-        \includegraphics[width=\textwidth]{images/overcalls}
-      \end{figure}
-
-      \begin{figure}[h!]
-        \caption{Flow signal intensities at deletion sites}
-        \includegraphics[width=\textwidth]{images/undercalls}
-      \end{figure}
-
-      More detailed analysis of errors in IonTorrent data can be found
-      in the article
-      ``Shining a Light on Dark Sequencing: Characterising Errors in
-      Ion Torrent PGM Data'' \emph{(PLoS~Comput~Biol~9(4))}
-      
-    \end{block}
-  \end{textblock}
-
-  \begin{textblock}{0.310}(0.465, 0.06)
-    \begin{block}{Error reduction results}
+  \begin{textblock}{0.320}(0.465, 0.075)
+    \begin{block}{Error reduction results\phantom{p}}
 
       We evaluated HammerIT on 6 publicly available datasets,
       using the same pipeline as the authors of the recently published
-      article ``Updating benchtop sequencing performance comparison''
-      \emph{(Nature~Biotechnology,~v.~31,~no.~4)}.
+      article \emph{(Jünemann~et~al,~Nat.~Biotech.,~2013;~vol.~31,~p.294--296)}.
       In that article, error rate in four Ion~Torrent datasets has
       been assessed. We used the same data plus two extra datasets from
       314v2~chip, which recently became available on Ion~Community~Portal.
@@ -222,18 +236,18 @@
 
       \begin{figure}[h]
         \caption{Error rates before and after correction}
-        \includegraphics[width=0.95\textwidth]{images/error_rate}
+        \includegraphics[width=0.90\textwidth]{images/error_rate}
       \end{figure}
 
       \begin{figure}[h]
         \caption{Error reduction by read position for Sakai 400bp reads}
-        \includegraphics[width=0.95\textwidth]{images/error_rate_vs_offset}
+        \includegraphics[width=0.90\textwidth]{images/error_rate_vs_offset}
       \end{figure}
     \end{block}
   \end{textblock}
 
-  \begin{textblock}{0.215}(0.01, 0.65)
-    \begin{block}{Pairwise distance calculation}
+  \begin{textblock}{0.215}(0.01, 0.64)
+    \begin{block}{Pairwise distance calculation \phantom{p}}
       We use 5-base lookahead to compute distance between $k$-mers in homopolymer-space. Helper
       table stores precomputed values of
       \begin{eqnarray*}
@@ -279,7 +293,7 @@
     \end{block}
   \end{textblock}
 
-  \begin{textblock}{0.23}(0.230, 0.65)
+  \begin{textblock}{0.23}(0.230, 0.64)
     \begin{block}{Homopolymer-space $k$-mer clustering}
       The starting point is single-linkage clustering of homopolymer-space $k$-mers. Two homopolymer-space
       $k$-mers belong to the same cluster if~the~distance between their nucleotide representations does not exceed one.
@@ -320,55 +334,49 @@
     \end{block}
   \end{textblock}
 
-  \begin{textblock}{0.215}(0.780, 0.06)
+  \begin{textblock}{0.215}(0.790, 0.075)
     \begin{block}{Assembly results}
-      We have assembled \emph{E.coli O157 H7 Sakai} 400bp reads before and after correction with MIRA 3.4.1.1 and SPAdes 2.4.0. For
-      the MIRA assembler, the reads were subsampled to get $_{\widetilde{~}}$40x coverage as recommended by the authors of the
-      original benchmark, whereas SPAdes assembler operated on the full dataset ($_{\widetilde{~}}$200x).
+      We have assembled \emph{E.coli O157 H7 Sakai} 400bp reads before and after correction with SPAdes 2.4.0.
+      Read coverage is $_{\widetilde{~}}$240x, length of the reference genome is 5498450 bp.
 
-      Length of the reference genome is 5498450 bp.
       \vspace{0.1em}
       \begin{table}[ht]
-        \caption{Assembly results, E.coli Sakai dataset (400bp). Contigs of length $\geq 500$ are used.}
-      \begin{tabularx}{\textwidth}{>{\fontsize{21.5}{24}\fontencoding{T1}\fontfamily{lmss}\fontseries{b}\selectfont}X|c|c|c|c}\toprule
-                                    & \multicolumn{2}{c|}{\bfseries MIRA 3.4.1.1} & \multicolumn{2}{c}{\bfseries SPAdes 2.4.0}   \\
-                                    \cline{2-3} \cline{4-5}
-                                    & uncorrected                     & corrected & uncorrected & corrected \\ \midrule
-                                    
-        \# contigs                 \rule{0pt}{4ex} & \textbf{178}    & 197             & 266            & 242            \\[1.0em]
-        Largest contig                             & \textbf{378520} & 378249          & 316904         & 374932         \\[1.0em]
-        Total length                               & 5510229         & 5517674         & 5322223        & 5320566        \\[1.0em]
-        NG50                                       & \textbf{147710} & 124917          & 106242         & 146551         \\[1.0em]
-        NG75                                       & \textbf{73050}  & 67854           & 41186          & 44318          \\[1.0em]
-        \# misassemblies                           & 23              & 19              & \textbf{0}     & 2              \\[1.0em]
-        \# local misassemblies                     & 17              & 20              & \textbf{8}     & 11             \\[1.0em]
-        Misassembled contigs length                & 842594          & 567793          & \textbf{0}     & 32563          \\[1.0em]
-        Genome fraction (\%)                       & 97.241          & \textbf{97.441} & 93.880         & 93.966         \\[1.0em]
-        Duplication ratio                          & 1.011           & 1.015           & \textbf{1.001} & \textbf{1.001} \\[1.0em]
-        \# mismatches per 100 kbp                  & 12.68           & 22.25           & \textbf{3.58}  & 4.70           \\[1.0em]
-        \# indels per 100 kbp                      & 9.85            & 6.64            & 6.21           & \textbf{5.88}  \\\bottomrule
+        \caption{Assembly results. Contigs of length $\geq 500$ are used.}
+      \begin{tabularx}{0.95\textwidth}{>{\fontsize{21.5}{24}\fontencoding{T1}\fontfamily{lmss}\fontseries{b}\selectfont}X|c|c}\toprule
+                                                   & uncorrected & corrected \\ \midrule
+        \# contigs                 \rule{0pt}{4ex} & 266         & 242       \\[1.0em]
+        Largest contig                             & 316904      & 374932    \\[1.0em]
+        Total length                               & 5322223     & 5320566   \\[1.0em]
+        NG50                                       & 106242      & 146551    \\[1.0em]
+        NG75                                       & 41186       & 44318     \\[1.0em]
+        \# misassemblies                           & 0           & 2         \\[1.0em]
+        \# local misassemblies                     & 8           & 11        \\[1.0em]
+        Misassembled contigs length                & 0           & 32563     \\[1.0em]
+        Genome fraction (\%)                       & 93.880      & 93.966    \\[1.0em]
+        \# mismatches per 100 kbp                  & 3.58        & 4.70      \\[1.0em]
+        \# indels per 100 kbp                      & 6.21        & 5.88      \\\bottomrule
       \end{tabularx}
       \end{table}
 
       \vspace{1em}
-      {\footnotesize
-      Command-line parameters used for assembly
-      \begin{table}[ht]
-        \begin{tabularx}{\textwidth}{c|>{\tt\footnotesize}X}\hline
-          MIRA 3.4.1.1 & --job=denovo,genome,accurate,iontor --notraceinfo IONTOR\_SETTINGS -ASSEMBLY:mprc=100 \\ \hline
-          SPAdes 2.4.0 & --only-assembler -k 21,33,55,77,99 \\
-        \end{tabularx}
-      \end{table}
+      {\small
+        Command-line parameters used for assembly: \linebreak
+        \texttt{--only-assembler -k 21,33,55,77,99}
       }
 
     \end{block}
     \begin{block}{Acknowledgements}
-      FILLME
-      \vspace{8.9em}
+        This work was supported by the Government of the Russian Federation
+        (grant 11.G34.31.0018) and RFBR (grant 12-01-00747-a).
+
+        We would like to thank Sergey Nikolenko and Alla Lapidus for their
+        insightful comments and fruitful discussions throughout the project.
+    \end{block}
+    \begin{block}{Additional information}
     \end{block}
   \end{textblock}
 
-  \begin{textblock}{0.200}(0.465, 0.65)
+  \begin{textblock}{0.200}(0.465, 0.64)
     \begin{block}{Subclustering}
       A cluster obtained from the initial process may contain $m \geq 2$ homopolymer-space $k$-mers from the genome.
       In this case, we split the cluster into $m$ subclusters by running $k$-means algorithm on it.
@@ -386,15 +394,15 @@
 
     \begin{block}{Cluster size distribution}
       \begin{figure}
-        \includegraphics[width=\textwidth]{images/clustersize}
+        \includegraphics[width=0.97\textwidth]{images/clustersize}
       \end{figure}
     \end{block}
   \end{textblock}
 
-  \begin{textblock}{0.105}(0.670, 0.65)
+  \begin{textblock}{0.115}(0.670, 0.64)
     \begin{block}{Typical cluster}
       \begin{table}[ht!]
-        \scalebox{0.637}{
+        \scalebox{0.666}{
           \ttfamily
           \begin{tabular}{|l|r|r|}
             \textbf{homopolymer-space 16-mer}  & \textbf{n}                             & \textbf{qual.}                          \\ \hline 
@@ -442,8 +450,9 @@
       \end{table}
     \end{block}
   \end{textblock}
-  \begin{textblock}{0.215}(0.780, 0.65)
+  \begin{textblock}{0.205}(0.790, 0.64)
     \begin{block}{Error correction algorithm}
+      \vspace{0.7em}
       \begin{algorithmic}
         \For{\textbf{each} \textit{read} from the dataset}
       \item \hspace{\algorithmicindent}\emph{(Producing contiguous corrected parts of \emph{read})}
@@ -476,7 +485,7 @@
            \State append read homopolymer runs after the last aligned run.
         \EndFor
       \end{algorithmic}
-      \vspace{1.0em}
+      \vspace{0.6em}
   \end{block}
 \end{textblock}
 

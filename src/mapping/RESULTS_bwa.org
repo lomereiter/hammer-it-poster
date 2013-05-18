@@ -90,7 +90,7 @@ library(reshape2)
 | (with ends)       |       636616 |   7853 |      12608 |     63781 |        0.049 |       0.120 |        0.005 |       0.012 |    33.26 |
 |-------------------+--------------+--------+------------+-----------+--------------+-------------+--------------+-------------+----------|
 
-#+begin_src R :session :results graphics :file "../../images/error_rate.pdf" :width 7 :height 3.5 :var df4s=400bp-sakai :var df3s=300bp-sakai :var df2s=200bp-sakai :var df1s=100bp-sakai :var df4d=400bp-dh10b :var df2d=200bp-dh10b
+#+begin_src R :session :results graphics :file "../../images/error_rate.pdf" :width 7 :height 3.2 :var df4s=400bp-sakai :var df3s=300bp-sakai :var df2s=200bp-sakai :var df1s=100bp-sakai :var df4d=400bp-dh10b :var df2d=200bp-dh10b
     dataframes <- lapply(list(df2d, df1s, df3s, df4d, df2s, df4s), makeDataFrame)
     df <- melt(dataframes)
     
@@ -104,7 +104,7 @@ library(reshape2)
     # df$dataset <- factor(dataset.names[df$L1], levels=dataset.names)
     df$dataset <- factor(dataset.names[df$L1], levels=dataset.names[rev(c(2,5,3,6,1,4))])
     
-    df$error.type <- factor(df$variable, labels=c("Indels", "Mismatches"))
+    df$error.type <- factor(df$variable, labels=c("Insertions/deletions", "Substitutions"))
     
     ## ggplot(data=df, aes(x=error.type), y=value, fill=type, group=type)) + 
     ##   geom_bar(stat="identity", position="dodge") +

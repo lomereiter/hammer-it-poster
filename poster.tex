@@ -175,11 +175,11 @@
       intensity rounded to the nearest integer.
 
       We have studied flow signal intensity distributions around
-      insertion/deletion sites. File B7-295.bam, downloaded from Ion
-      Community website, contained 4.6M~insertions, 5.0M~deletions,
+      insertion/deletion sites. File B7-295.bam, downloaded from the
+      Ion~Community website, contained 4.6M~insertions, 5.0M~deletions,
       and 1.5M~mismatches.
       
-      Overwhelming majority of errors turned out to be
+      The overwhelming majority of errors turned out to be
       insertions/deletions of length~1, occuring when flow signal
       intensity is approximately halfway between two adjacent
       integers.
@@ -207,23 +207,26 @@
       %{\large
       Let $\mathscr{N}$ denote the nucleotide alphabet $\left\{\textrm{A, C, G, T}\right\}$.
 
-      By~definition, put $\mathscr{H} = \mathscr{N} \times \mathbb{N}^+$.
+      Define $\mathscr{H} = \mathscr{N} \times \mathbb{N}^+$.
 
       We call an~element of~the~alphabet~$\mathscr{H}$~a~\emph{homopolymer run},
       and~an~element of~$\mathscr{H}^k$~a~\emph{homopolymer-space $k$-mer}.
 
-      We use $x[k]$ to denote $k$-th element of
+      We use $x[k]$ to denote the $k$-th element of
       a sequence, using zero-based indexing; $x[k\textrm{ .. }l]$
-      to denote a subsequence $x[k]x[k+1]\dots x[l]$; finally, length of $x$ is denoted by $|x|$.
+      to denote a subsequence $x[k]x[k+1]\dots x[l]$.
+
+      The length of $x$ is denoted by $|x|$.
       
       Distance between $i,\;j \in \mathscr{H}^k$  is defined as the
-      minimum number of $1$-base insertions/deletions/mismatches needed to align common start of $i$ and $j$.
+      minimum number of $1$-base insertions/deletions/mismatches
+      needed to align the common start of $i$ and $j$.
       It is denoted by $\mathrm{dist}(i, j)$.
       %}
     \end{block}
 
     \begin{block}{HammerIT workflow}
-      \vspace{-.1em}
+      \vspace{-.35em}
       \begin{figure}
         \centering
         \tikzstyle{state} = [draw, ellipse, fill=green!20, text centered, minimum width=16em]
@@ -232,7 +235,7 @@
         \resizebox{\columnwidth}{!}{
         \begin{tikzpicture}[node distance = 2.5cm]
           \node[state] (raw) {Set of reads};
-          \node[block, below of=raw] (count) {Count homopolymer-space $k$-mer statistics};
+          \node[block, below of=raw] (count) {Counting homopolymer-space $k$-mer statistics};
           \node[block, below of=count] (cluster) {Single-linkage clustering of homopolymer-space $k$-mers};
           \node[block, below of=cluster] (subcluster) {Subclustering with $k$-means};
           \node[block, below of=subcluster, text width=18em] (correction) {Correcting reads};
@@ -257,14 +260,14 @@
       article \emph{(Jünemann~et~al,~Nat.~Biotech.,~2013;~vol.~31,~p.294--296)}.
       In that article, error rate in four Ion~Torrent datasets has
       been assessed. We used the same data plus two extra datasets from
-      314v2~chip, which recently became available on Ion~Community~Portal.
+      314v2~chip, which recently became available on the Ion~Community~Portal.
      
       Indel/mismatch error rates were calculated for uniquely mapped
       reads before and after correction. For each dataset, correction
       was done in two ways. In the first setup, trimming was done for 
       read ends that couldn't be corrected due to lack of good k-mers, 
       while in the second one such read ends were preserved in the
-      output. Relative change in read coverage after
+      output. The relative change in read coverage after
       correction stayed within 0.4\% in all cases.
 
       \vspace{0.64em}
@@ -282,7 +285,7 @@
   \end{textblock}
 \begin{textblock}{0.205}(0.790, 0.075)
     \begin{block}{Assembly results}
-      We have assembled \emph{E.coli O157 H7 Sakai} 400bp reads before and after correction with SPAdes 2.4.0.
+      We have assembled \emph{E.~coli O157 H7 Sakai} 400bp reads before and after correction with SPAdes 2.4.0.
       Read coverage is $_{\widetilde{~}}$240x, length of the reference genome is 5498450 bp.
 
       \vspace{0.1em}
@@ -330,8 +333,8 @@
   \begin{textblock}{0.215}(0.01, 0.64)
 
     \begin{detailsblock}{Pairwise distance calculation \phantom{p}}
-      We use 5-base lookahead to compute distance between $k$-mers in homopolymer-space. Helper
-      table stores precomputed values of
+      We use 5-base lookahead to compute the distance between $k$-mers
+      in homopolymer-space. A helper table stores precomputed values of
       \begin{eqnarray*}
         H_k: \mathscr{N}^{k} \times \mathscr{N}^{k} \to \left\{\mathrm{Insertion, Deletion,
           Mismatch}\right\}, \ k=1,2,3,4,5\,\mathrm{.}
@@ -386,8 +389,8 @@
       $k$-mers into smaller blocks sharing a substring, and then use the quadratic algorithm for each block.
       
       In order to detect all pairs of connected $k$-mers with such grouping, ranges $(0\textrm{ .. }\lfloor k/2 \rfloor
-      - 1)$, $(1\textrm{ .. }\lfloor k/2 \rfloor)$, $\dots$, $(\lfloor (k + 1)/2 \rfloor\textrm{ .. }k - 1)$ are to be examined.
-      Despite of this, we use only the first and the last of the ranges, to speed up the clustering step. 
+      - 1)$, $(1\textrm{ .. }\lfloor k/2 \rfloor)$, $\dots$, $(\lfloor (k + 1)/2 \rfloor\textrm{ .. }k - 1)$ should be examined.
+      However, we use only the first and the last of the ranges, to speed up the clustering step. 
       This increases the number of \emph{singletons} --- clusters consisting of only one $k$-mer, usually erroneous ---
       but has little impact on correction performance because of adjacent read $k$-mers making much larger contribution
       into the consensus scores (the number of singleton occurrences is usually low).
@@ -420,7 +423,7 @@
     \begin{textblock}{0.200}(0.465, 0.64)
     \begin{detailsblock}{Subclustering}
       A cluster obtained from the initial process may contain $m \geq 2$ homopolymer-space $k$-mers from the genome.
-      In this case, we split the cluster into $m$ subclusters by running $k$-means algorithm on it.
+      In this case, we split the cluster into $m$ subclusters by running a $k$-means algorithm on it.
 
       The subtle question is how to determine $m$. Currently we just set it to be the number of the
       cluster elements with quality within machine epsilon of $1$, where \emph{quality} of $x \in \mathscr{H}^k$

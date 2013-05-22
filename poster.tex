@@ -237,7 +237,7 @@
           \node[state] (raw) {Set of reads};
           \node[block, below of=raw] (count) {Counting homopolymer-space $k$-mer statistics};
           \node[block, below of=count] (cluster) {Single-linkage clustering of homopolymer-space $k$-mers};
-          \node[block, below of=cluster] (subcluster) {Subclustering with $k$-means};
+          \node[block, below of=cluster] (subcluster) {Subclustering};
           \node[block, below of=subcluster, text width=18em] (correction) {Correcting reads};
           \node[state, below of=correction] (corrected) {Set of corrected reads};
           \path[line] (raw) -- (count);
@@ -358,7 +358,7 @@
         \end{align*}
       \end{center}
 
-      \vspace{-.3em}
+      \vspace{-.23em}
     {\large Algorithm}
     \begin{algorithmic}
       \State \textbf{Input:} $x, y \in \mathscr{N}^+$ --- homopolymer-space $k$-mers in nucleotide alphabet
@@ -423,7 +423,8 @@
     \begin{textblock}{0.200}(0.465, 0.64)
     \begin{detailsblock}{Subclustering}
       A cluster obtained from the initial process may contain $m \geq 2$ homopolymer-space $k$-mers from the genome.
-      In this case, we split the cluster into $m$ subclusters by running a $k$-means algorithm on it.
+      In this case, we select the $m$ most occuring elements to be the subcluster centers. Each of the
+      remaining elements is then assigned to the nearest center.
 
       The subtle question is how to determine $m$. Currently we just set it to be the number of the
       cluster elements with quality within machine epsilon of $1$, where \emph{quality} of $x \in \mathscr{H}^k$
@@ -437,9 +438,11 @@
     \end{detailsblock}
 
     \begin{detailsblock}{Cluster size distribution}
+      \vspace{-0.55em}
       \begin{figure}
         \includegraphics[width=0.97\textwidth]{images/clustersize}
       \end{figure}
+      \vspace{-0.7em}
     \end{detailsblock}
   \end{textblock}
 
@@ -496,7 +499,7 @@
   \end{textblock}
   \begin{textblock}{0.205}(0.790, 0.64)
     \begin{detailsblock}{Error correction algorithm}
-      \vspace{0.7em}
+      \vspace{0.64em}
       \begin{algorithmic}
         \For{\textbf{each} \textit{read} from the dataset}
       \item \hspace{\algorithmicindent}\emph{(Producing contiguous corrected parts of \emph{read})}
